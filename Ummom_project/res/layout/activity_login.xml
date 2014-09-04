@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+	
+    <TextView 
+        android:id="@+id/login_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="35dp"
+        android:text="LogIn"
+        android:gravity="center"
+        />
+	
+    
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        
+        <TextView
+            android:id="@+id/id_text"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="ID : "
+            android:gravity="right"
+            />
+        
+        <EditText 
+            android:id="@+id/id_editText"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+           	android:layout_toRightOf="@id/id_text"
+            />
+     	
+	     	
+    </RelativeLayout>
+	<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        
+       <TextView
+            android:id="@+id/password_text"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="password : "
+            android:textSize="15dp" 
+            android:gravity="right"
+            />
+       
+       <EditText 
+            android:id="@+id/password_editText"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+           android:layout_toRightOf="@id/password_text"
+            />
+       
+       
+       			
+     </RelativeLayout>
+
+	<Button
+	    android:id="@+id/btn_login"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="확인"
+	    android:textSize="15dp" 
+	    android:layout_gravity="center"
+	    />
+	
+	<Button
+	    android:id="@+id/btn_register"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="회원가입"
+	    android:textSize="15dp" 
+	    android:layout_gravity="center"
+	    />
+
+    <TextView
+           android:id="@+id/test_textView"
+           android:layout_width="250dp"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="15dp"
+           android:layout_marginTop="2dp"                
+           android:textColor="#ff1226"
+           android:textSize="11dp" >
+       </TextView>
+            
+     
+	
+		
+</LinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    
+   >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="5dp"
+        >
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="187dp"
+            android:layout_height="30dp"
+            android:text="Title"
+            android:textSize="15dp" />
+
+        <ImageView
+            android:id="@+id/edit_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginRight="15dp"          
+            android:layout_toRightOf="@+id/title"
+            android:src="@drawable/eraser_darkgray"
+            />
+        
+        <ImageView
+            android:id="@+id/delete_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/edit_icon"
+            android:src="@drawable/trash_darkgray"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/des"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="sub_Title"
+        android:textSize="15dp" 
+        android:background="@drawable/firsttab_contents_border"
+        />
+
+</LinearLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/tab2_ytlist_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="1"
+            android:width="48dp"
+            android:height="48dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_launcher" />
+
+        <!-- width 360 - 48 = 312 -->
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tab2_ytlist_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="220dp"
+            android:height="24dp"
+            android:maxEms="25"
+            android:maxLines="1"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/tab2_ytlist_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="220dp"
+            android:height="24dp"
+            android:maxEms="25"
+            android:maxLines="1"
+            android:text="TextView" />
+
+        <!-- width 312 - 230 = 82 -->
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tab2_ytlist_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="82dp"
+            android:height="48dp"
+            android:text="TextView" />
+
+        <!-- width 82 - 82 = 0 -->
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Ummom</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    
+    <!-- 날씨 문자열 -->
+    <string name="Weather_SKY_A01">맑음</string>
+    <string name="Weather_SKY_A02">구름조금</string>
+    <string name="Weather_SKY_A03">구름많음</string>
+    <string name="Weather_SKY_A04">구름많고 비</string>
+    <string name="Weather_SKY_A05">구름많고 눈</string>
+    <string name="Weather_SKY_A06">구름많고 비 또는 눈</string>
+    <string name="Weather_SKY_A07">흐림</string>
+    <string name="Weather_SKY_A08">흐리고 비</string>
+    <string name="Weather_SKY_A09">흐리고 눈</string>
+    <string name="Weather_SKY_A10">흐리고 비 또는 눈</string>
+    <string name="Weather_SKY_A11">흐리고 낙뢰</string>
+    <string name="Weather_SKY_A12">뇌우, 비</string>
+    <string name="Weather_SKY_A13">뇌우, 눈</string>
+    <string name="Weather_SKY_A14">뇌우, 비 또는 눈</string>
+    <!-- 날씨 문자열 -->
+    
+    <!-- 황 문자열 -->
+    <string name="str_arrange">준비물</string>
+    <string name="str_assign">숙제</string>
+    <string name="str_mychild">우리 아이는 어디에?</string>
+    <string name="str_next">Next</string>
+    <string name="str_prev">Prev</string>
+    <string name="str_moreinfo">지출 자세히 보기</string>
+    <string name="str_costinfo">이번 달 지출 비율</string>
+    <string name="str_monthly">월별 지출 통계</string>
+    <!-- 황 문자열 -->
+
+</resources>

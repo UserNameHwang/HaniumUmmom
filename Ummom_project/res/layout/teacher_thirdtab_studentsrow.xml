@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" 
+    android:divider="@null"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp"
+    >
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="5dp"
+        android:paddingTop="15dp"
+        android:text="ㄱ"
+        android:textSize="25dp" 
+        android:textColor="#bcc9ca"
+        />
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:contentDescription="@string/hello_world"
+        android:padding="5dp"
+        android:src="@drawable/sample_view"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+            
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/birth"
+                android:layout_marginLeft="8dp"
+                android:text="김인창"
+                android:textSize="20dp"
+                android:textStyle="normal" />
+            
+            <TextView
+                android:id="@+id/birth"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="12dp"
+                android:layout_toRightOf="@+id/name"
+                android:text="91.02.27"
+                android:textSize="20dp"
+                android:textStyle="normal"                
+                 />
+            
+           
+             <ImageView
+		        android:id="@+id/img3"
+		        android:layout_width="15dp"
+		        android:layout_height="15dp"
+		        android:layout_marginLeft="10dp"
+		        android:layout_marginTop="5dp"
+		        android:layout_below="@+id/name"
+		        android:contentDescription="@string/hello_world"
+		        android:src="@drawable/phone_blue"
+		        />
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/img3"
+                android:layout_below="@+id/name"
+                android:text="010-3306-5990"
+                android:layout_marginLeft="5dp"
+		        android:layout_marginTop="2dp"
+                android:textSize="15dp"
+                android:textStyle="normal" />
+            
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/next_icon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/relativeLayout1"
+            android:contentDescription="@string/hello_world"            
+            android:layout_marginRight="10dp"
+            android:src="@drawable/info_grey" />
+    </RelativeLayout>
+
+</LinearLayout>

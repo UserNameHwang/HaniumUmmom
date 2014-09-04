@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/view_border"
+    android:orientation="horizontal" 
+    android:layout_marginTop="5dp"
+    >
+
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/category_homework"
+        android:gravity="center"
+        android:text="할일"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"        
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/TextView1"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="5dp"
+                android:text="오늘 할일"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:id="@+id/image_Homewrite"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/pencil_blue" />
+            
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/list_relative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" 
+            
+            android:layout_marginTop="5dp"
+            >
+
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/next_schedule"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:text="다음 일정"
+                android:textSize="18dp" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:layout_marginBottom="5dp"
+                >
+
+                <TextView
+                    android:id="@+id/nc_title"
+                    android:layout_width="160dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:paddingTop="5dp"
+                    android:text="All Day 아리수"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/nc_d_day"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/nc_title"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:text="D-3"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/nc_alarm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="17dp"
+                    android:layout_toRightOf="@+id/nc_d_day"
+                    android:paddingTop="5dp"
+                    android:src="@drawable/alarm_gray" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
