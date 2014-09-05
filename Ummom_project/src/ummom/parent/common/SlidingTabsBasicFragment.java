@@ -101,7 +101,7 @@ public class SlidingTabsBasicFragment extends Fragment {
 				
 				if(check == 0 ){
 					mapView = getActivity().getLayoutInflater().inflate(
-							R.layout.teacher_firsttab, container, false);
+							R.layout.parent_firsttab, container, false);
 					container.addView(mapView);
 					
 					check++;					
