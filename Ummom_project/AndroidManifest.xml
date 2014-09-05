@@ -71,7 +71,7 @@
         <activity android:name="ummom.teacher.mainsliding.MainTeacher"></activity>
         <activity android:name="ummom.child.youtube.YoutubePlayer"></activity>
         <activity android:name="ummom.teacher.register.RegisterActivity"></activity>
-        <activity android:name="ummom.parent.common.ParentActivity"></activity>
+        <activity android:name="ummom.parent.common.MainParent"></activity>
         
     </application>
 

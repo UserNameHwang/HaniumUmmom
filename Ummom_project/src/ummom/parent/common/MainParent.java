@@ -7,7 +7,7 @@ import ummom.parent.firstTab.MapActivity;
 import ummom.parent.managePage.IDSearch;
 import ummom.parent.managePage.SchoolSearch;
 
-import com.example.android.slidingtabsbasic.R;
+import ummom.login.R;
 import com.google.android.gcm.GCMRegistrar;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -27,7 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-public class ParentActivity extends FragmentActivity {
+public class MainParent extends FragmentActivity {
 
 	private SlidingTabsBasicFragment fragment;
 
@@ -43,7 +43,7 @@ public class ParentActivity extends FragmentActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.main_parent);
 		
 		// GCM 등록 과정
 		if (checkPlayServices()) {
@@ -210,7 +210,7 @@ public class ParentActivity extends FragmentActivity {
 			super.onBackPressed();
 		} else {
 			backTime = tempTime;
-			Toast.makeText(ParentActivity.this, "'뒤로' 버튼을 한번 더 누르시면 종료됩니다.",
+			Toast.makeText(MainParent.this, "'뒤로' 버튼을 한번 더 누르시면 종료됩니다.",
 					Toast.LENGTH_SHORT).show();
 		}
 	}
@@ -218,7 +218,7 @@ public class ParentActivity extends FragmentActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.login, menu);
 		return true;
 
 	}

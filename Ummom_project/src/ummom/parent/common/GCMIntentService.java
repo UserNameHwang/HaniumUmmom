@@ -2,6 +2,8 @@ package ummom.parent.common;
 
 import java.util.Iterator;
 
+import ummom.login.R;
+
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -51,7 +53,7 @@ public class GCMIntentService extends GCMBaseIntentService {
 
 		String title = context.getString(R.string.app_name);
 
-		Intent notificationIntent = new Intent(context, ParentActivity.class);
+		Intent notificationIntent = new Intent(context, MainParent.class);
 
 		notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
 				| Intent.FLAG_ACTIVITY_SINGLE_TOP);

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEEEEEEE"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:weightSum="1.0" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="0.1" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="학교 검색으로 선생님을 찾습니다." />
+
+        <EditText
+            android:id="@+id/School_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#FFFFFF"
+            android:hint="학교 입력"
+            android:padding="10dp" >
+        </EditText>
+
+        <Button
+            android:id="@+id/School_searchbutton"
+            android:layout_height="30dp"
+            android:layout_width="50dp"
+            android:layout_margin="10dp"
+            android:background="#FFFFFF"
+            android:textSize="15sp"
+            android:text="찾기" />
+
+    </LinearLayout>
+
+    <ViewFlipper
+        android:id="@+id/School_Flipper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.9" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp" >
+
+            <ListView
+                android:id="@+id/School_List"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#FFFFFF" >
+            </ListView>
+
+        </RelativeLayout>
+
+    </ViewFlipper>
+
+</LinearLayout>

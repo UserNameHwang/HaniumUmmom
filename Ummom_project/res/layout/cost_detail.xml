@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/CostLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEEEEEEE"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/view_border"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="지출 내역" />
+
+        <LinearLayout
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="#ffbfbfbf" >
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/costSum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EEEEEEEE" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/Cost1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/view_border"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:id="@+id/CostTab1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#afbfff"
+                    android:onClick="onACost"
+                    android:padding="10dp" >
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginRight="5dp" >
+
+                        <ImageButton
+                            android:id="@+id/CostimgBtn1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#00000000"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/icon_expand" />
+
+                        <ImageButton
+                            android:id="@+id/CostimgBtn2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#00000000"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/icon_collapse"
+                            android:visibility="invisible" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/Costtext1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:text="학원비"
+                        android:textColor="#FFFFFF" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#ffbfbfbf"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <ViewFlipper
+                    android:id="@+id/CostFlipper1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" >
+
+                    <TextView
+                        android:id="@+id/Atext1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <ListView
+                        android:id="@+id/Costlist1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+                    </ListView>
+                </ViewFlipper>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Cost2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/view_border"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:id="@+id/CostTab2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#afbfff"
+                    android:onClick="onRCost"
+                    android:padding="10dp" >
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginRight="5dp" >
+
+                        <ImageButton
+                            android:id="@+id/CostimgBtn3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#00000000"
+                            android:src="@drawable/icon_expand" />
+
+                        <ImageButton
+                            android:id="@+id/CostimgBtn4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#00000000"
+                            android:src="@drawable/icon_collapse"
+                            android:visibility="invisible" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/Costtext2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:text="준비물"
+                        android:textColor="#FFFFFF" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#ffbfbfbf"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <ViewFlipper
+                    android:id="@+id/CostFlipper2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" >
+
+                    <TextView
+                        android:id="@+id/Atext2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <ListView
+                        android:id="@+id/Costlist2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+                    </ListView>
+                </ViewFlipper>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Cost3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/view_border"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:id="@+id/CostTab3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#afbfff"
+                    android:onClick="onCCost"
+                    android:padding="10dp" >
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginRight="5dp" >
+
+                        <ImageButton
+                            android:id="@+id/CostimgBtn5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#00000000"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/icon_expand" />
+
+                        <ImageButton
+                            android:id="@+id/CostimgBtn6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#00000000"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/icon_collapse"
+                            android:visibility="invisible" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/Costtext3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:text="용돈"
+                        android:textColor="#FFFFFF" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#ffbfbfbf"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <ViewFlipper
+                    android:id="@+id/CostFlipper3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" >
+
+                    <TextView
+                        android:id="@+id/Atext3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <ListView
+                        android:id="@+id/Costlist3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+                    </ListView>
+                </ViewFlipper>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Cost4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/view_border"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:id="@+id/CostTab4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#afbfff"
+                    android:onClick="onECost"
+                    android:padding="10dp" >
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginRight="5dp" >
+
+                        <ImageButton
+                            android:id="@+id/CostimgBtn7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#00000000"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/icon_expand" />
+
+                        <ImageButton
+                            android:id="@+id/CostimgBtn8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#00000000"
+                            android:contentDescription="@string/app_name"
+                            android:src="@drawable/icon_collapse"
+                            android:visibility="invisible" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/Costtext4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:text="기타"
+                        android:textColor="#FFFFFF" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#ffbfbfbf"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <ViewFlipper
+                    android:id="@+id/CostFlipper4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp" >
+
+                    <TextView
+                        android:id="@+id/Atext4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <ListView
+                        android:id="@+id/Costlist4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+                    </ListView>
+                </ViewFlipper>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

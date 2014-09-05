@@ -1,6 +1,7 @@
 package ummom.login;
 
 import ummom.child.common.MainChild;
+import ummom.parent.common.MainParent;
 import ummom.teacher.register.RegisterActivity;
 import ummom.teacher.mainsliding.MainTeacher;
 import android.app.Activity;
@@ -104,6 +105,10 @@ public class LoginActivity extends Activity implements OnClickListener{
 			}
 			else if(LoginModel.mb_type == child){
 				Intent intent = new Intent(LoginActivity.this, MainChild.class);
+				startActivity(intent);
+			}
+			else if(LoginModel.mb_type == parent){
+				Intent intent = new Intent(LoginActivity.this, MainParent.class);
 				startActivity(intent);
 			}
         }

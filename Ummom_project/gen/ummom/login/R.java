@@ -8,6 +8,13 @@
 package ummom.login;
 
 public final class R {
+    public static final class anim {
+        public static final int content_anim=0x7f040000;
+        public static final int imgbtn_rotate=0x7f040001;
+        public static final int page_appear=0x7f040002;
+        public static final int page_disappear=0x7f040003;
+        public static final int page_donmove=0x7f040004;
+    }
     public static final class attr {
         /** 
     The size of the ad. It must be one of BANNER, FULL_BANNER, LEADERBOARD,
@@ -164,20 +171,20 @@ containing a value of this type.
         public static final int zOrderOnTop=0x7f010010;
     }
     public static final class color {
-        public static final int common_action_bar_splitter=0x7f040009;
+        public static final int common_action_bar_splitter=0x7f050009;
         /**  Sign-in Button Colors 
          */
-        public static final int common_signin_btn_dark_text_default=0x7f040000;
-        public static final int common_signin_btn_dark_text_disabled=0x7f040002;
-        public static final int common_signin_btn_dark_text_focused=0x7f040003;
-        public static final int common_signin_btn_dark_text_pressed=0x7f040001;
-        public static final int common_signin_btn_default_background=0x7f040008;
-        public static final int common_signin_btn_light_text_default=0x7f040004;
-        public static final int common_signin_btn_light_text_disabled=0x7f040006;
-        public static final int common_signin_btn_light_text_focused=0x7f040007;
-        public static final int common_signin_btn_light_text_pressed=0x7f040005;
-        public static final int common_signin_btn_text_dark=0x7f04000a;
-        public static final int common_signin_btn_text_light=0x7f04000b;
+        public static final int common_signin_btn_dark_text_default=0x7f050000;
+        public static final int common_signin_btn_dark_text_disabled=0x7f050002;
+        public static final int common_signin_btn_dark_text_focused=0x7f050003;
+        public static final int common_signin_btn_dark_text_pressed=0x7f050001;
+        public static final int common_signin_btn_default_background=0x7f050008;
+        public static final int common_signin_btn_light_text_default=0x7f050004;
+        public static final int common_signin_btn_light_text_disabled=0x7f050006;
+        public static final int common_signin_btn_light_text_focused=0x7f050007;
+        public static final int common_signin_btn_light_text_pressed=0x7f050005;
+        public static final int common_signin_btn_text_dark=0x7f05000a;
+        public static final int common_signin_btn_text_light=0x7f05000b;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -187,8 +194,8 @@ containing a value of this type.
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
     
          */
-        public static final int activity_horizontal_margin=0x7f080000;
-        public static final int activity_vertical_margin=0x7f080001;
+        public static final int activity_horizontal_margin=0x7f090000;
+        public static final int activity_vertical_margin=0x7f090001;
     }
     public static final class drawable {
         public static final int alarm_gray=0x7f020000;
@@ -236,326 +243,441 @@ containing a value of this type.
         public static final int ic_plusone_small_off_client=0x7f02002a;
         public static final int ic_plusone_standard_off_client=0x7f02002b;
         public static final int ic_plusone_tall_off_client=0x7f02002c;
-        public static final int img_round=0x7f02002d;
-        public static final int info_grey=0x7f02002e;
-        public static final int list_line=0x7f02002f;
-        public static final int pencil_blue=0x7f020030;
-        public static final int phone2_blue=0x7f020031;
-        public static final int phone_blue=0x7f020032;
-        public static final int sample222=0x7f020033;
-        public static final int sample_view=0x7f020034;
-        public static final int sample_view1=0x7f020035;
-        public static final int sample_view2=0x7f020036;
-        public static final int sample_view3=0x7f020037;
-        public static final int sample_view4=0x7f020038;
-        public static final int tab1_calendar=0x7f020039;
-        public static final int tab2_player=0x7f02003a;
-        public static final int tab3_addr=0x7f02003b;
-        public static final int tab4_pic=0x7f02003c;
-        public static final int tab5_wallet=0x7f02003d;
-        public static final int tab_border=0x7f02003e;
-        public static final int tab_bubble=0x7f02003f;
-        public static final int tab_user=0x7f020040;
-        public static final int textlines=0x7f020041;
-        public static final int title_border=0x7f020042;
-        public static final int trash_darkgray=0x7f020043;
-        public static final int view_border=0x7f020044;
-        public static final int weather_cloud=0x7f020045;
-        public static final int weather_hardrain=0x7f020046;
-        public static final int weather_littlerain=0x7f020047;
-        public static final int weather_littlesnow=0x7f020048;
-        public static final int weather_partcloud=0x7f020049;
-        public static final int weather_rain=0x7f02004a;
-        public static final int weather_snow=0x7f02004b;
-        public static final int weather_storm=0x7f02004c;
-        public static final int weather_sun=0x7f02004d;
-        public static final int weather_tornado=0x7f02004e;
+        public static final int icon_collapse=0x7f02002d;
+        public static final int icon_expand=0x7f02002e;
+        public static final int icon_find_user=0x7f02002f;
+        public static final int icon_next=0x7f020030;
+        public static final int icon_pencil=0x7f020031;
+        public static final int icon_school=0x7f020032;
+        public static final int icon_search=0x7f020033;
+        public static final int icon_speech_bubble24=0x7f020034;
+        public static final int icon_user24=0x7f020035;
+        public static final int img_round=0x7f020036;
+        public static final int info_grey=0x7f020037;
+        public static final int list_line=0x7f020038;
+        public static final int pencil_blue=0x7f020039;
+        public static final int phone2_blue=0x7f02003a;
+        public static final int phone_blue=0x7f02003b;
+        public static final int round_border=0x7f02003c;
+        public static final int sample222=0x7f02003d;
+        public static final int sample_view=0x7f02003e;
+        public static final int sample_view1=0x7f02003f;
+        public static final int sample_view2=0x7f020040;
+        public static final int sample_view3=0x7f020041;
+        public static final int sample_view4=0x7f020042;
+        public static final int tab1_calendar=0x7f020043;
+        public static final int tab2_player=0x7f020044;
+        public static final int tab3_addr=0x7f020045;
+        public static final int tab4_pic=0x7f020046;
+        public static final int tab5_wallet=0x7f020047;
+        public static final int tab_border=0x7f020048;
+        public static final int tab_bubble=0x7f020049;
+        public static final int tab_user=0x7f02004a;
+        public static final int textlines=0x7f02004b;
+        public static final int title_border=0x7f02004c;
+        public static final int trash_darkgray=0x7f02004d;
+        public static final int view_border=0x7f02004e;
+        public static final int weather_cloud=0x7f02004f;
+        public static final int weather_hardrain=0x7f020050;
+        public static final int weather_littlerain=0x7f020051;
+        public static final int weather_littlesnow=0x7f020052;
+        public static final int weather_partcloud=0x7f020053;
+        public static final int weather_rain=0x7f020054;
+        public static final int weather_snow=0x7f020055;
+        public static final int weather_storm=0x7f020056;
+        public static final int weather_sun=0x7f020057;
+        public static final int weather_tornado=0x7f020058;
     }
     public static final class id {
-        public static final int CalendarMonthTxt=0x7f05000f;
-        public static final int ImageView1=0x7f05002e;
-        public static final int LinearLayout1=0x7f05002b;
-        public static final int LinearLayout2=0x7f05002a;
-        public static final int RelativeLayout1=0x7f05002c;
-        public static final int TextView1=0x7f05002d;
-        public static final int action_settings=0x7f050076;
-        public static final int alarm=0x7f05001a;
-        public static final int birth=0x7f050071;
-        public static final int btn_calendar_nextmonth=0x7f050010;
-        public static final int btn_calendar_prevmonth=0x7f05000e;
-        public static final int btn_login=0x7f05000a;
-        public static final int btn_register=0x7f05000b;
-        public static final int btn_registerOK=0x7f050066;
-        public static final int btn_today=0x7f050011;
-        public static final int country_fragment3=0x7f05006c;
-        public static final int date=0x7f050016;
-        public static final int delete_icon=0x7f050048;
-        public static final int des=0x7f050015;
-        public static final int editText_birth_Day=0x7f050062;
-        public static final int editText_birth_Month=0x7f050061;
-        public static final int editText_birth_Year=0x7f050060;
-        public static final int editText_day=0x7f050019;
-        public static final int editText_id=0x7f050057;
-        public static final int editText_month=0x7f050018;
-        public static final int editText_name=0x7f05005e;
-        public static final int editText_phone=0x7f050064;
-        public static final int editText_pwd=0x7f050059;
-        public static final int editText_pwd2=0x7f05005c;
-        public static final int editText_type=0x7f050063;
-        public static final int editText_year=0x7f050017;
-        public static final int edit_icon=0x7f050047;
-        public static final int fragalbum_item_date=0x7f05001f;
-        public static final int fragalbum_item_layout=0x7f05001d;
-        public static final int fragalbum_item_title=0x7f05001e;
-        public static final int fragmentCalendar=0x7f050069;
-        public static final int fragment_album_list=0x7f05001c;
-        public static final int fragment_album_title=0x7f05001b;
-        public static final int fragment_scedule_evnets=0x7f05006b;
-        public static final int fragment_scedule_homework=0x7f05006a;
-        public static final int fragschedule_schedule_list_relative=0x7f05002f;
-        public static final int fragweather_item_weather_icon=0x7f05003e;
-        public static final int fragweather_item_weather_temphigh=0x7f050041;
-        public static final int fragweather_item_weather_templow=0x7f050040;
-        public static final int fragweather_item_weather_text=0x7f05003f;
-        public static final int fragweather_item_weather_time=0x7f05003d;
-        public static final int fragweather_weatherlist=0x7f05003c;
-        public static final int fragweather_weathertime=0x7f05003b;
-        public static final int fragweather_weathertitle=0x7f05003a;
-        public static final int hybrid=0x7f050004;
-        public static final int id_editText=0x7f050007;
-        public static final int id_text=0x7f050006;
-        public static final int image_Homewrite=0x7f050068;
-        public static final int img=0x7f05006f;
-        public static final int img3=0x7f050072;
-        public static final int item_subtitle=0x7f050055;
-        public static final int item_title=0x7f050056;
-        public static final int linearLayout0=0x7f050023;
-        public static final int linearLayout1=0x7f050028;
-        public static final int listView=0x7f05006d;
-        public static final int list_relative=0x7f050067;
-        public static final int login_text=0x7f050005;
-        public static final int name=0x7f050070;
-        public static final int nc_alarm=0x7f050033;
-        public static final int nc_d_day=0x7f050032;
-        public static final int nc_title=0x7f050031;
-        public static final int next_icon=0x7f050074;
-        public static final int next_schedule=0x7f050030;
-        public static final int none=0x7f050000;
-        public static final int normal=0x7f050001;
-        public static final int password_editText=0x7f050009;
-        public static final int password_text=0x7f050008;
-        public static final int phone=0x7f050073;
-        public static final int relativeLayout1=0x7f050075;
-        public static final int sample_content_fragment=0x7f050054;
-        public static final int sample_main_layout=0x7f050053;
-        public static final int satellite=0x7f050002;
-        public static final int scedule_homework_fragment=0x7f05004d;
-        public static final int scedule_item_delete_icon=0x7f050036;
-        public static final int scedule_item_des=0x7f050037;
-        public static final int scedule_item_edit_icon=0x7f050035;
-        public static final int scedule_item_title=0x7f050034;
-        public static final int scrollView1=0x7f050025;
-        public static final int selectmonth=0x7f05000d;
-        public static final int sliding_tabs_child=0x7f050020;
-        public static final int sliding_tabs_teacher=0x7f050038;
-        public static final int tab1_nextcontent=0x7f05004c;
-        public static final int tab1_nexttitle=0x7f05004b;
-        public static final int tab1_nowcontent=0x7f05004a;
-        public static final int tab1_nowtitle=0x7f050049;
-        public static final int tab2_btn_search=0x7f05004f;
-        public static final int tab2_edt_searchquery=0x7f05004e;
-        public static final int tab2_list=0x7f050050;
-        public static final int tab2_youtube_fragment=0x7f050042;
-        public static final int tab2_ytlist_date=0x7f050046;
-        public static final int tab2_ytlist_image=0x7f050043;
-        public static final int tab2_ytlist_subtitle=0x7f050045;
-        public static final int tab2_ytlist_title=0x7f050044;
-        public static final int tab3_weather=0x7f050051;
-        public static final int tab4_desctext=0x7f050027;
-        public static final int tab4_fragment_album=0x7f050052;
-        public static final int tab4_gallery=0x7f050029;
-        public static final int tab4_imgview=0x7f050024;
-        public static final int tab4_linear=0x7f050022;
-        public static final int tab4_titletext=0x7f050026;
-        public static final int terrain=0x7f050003;
-        public static final int test_textView=0x7f05000c;
-        public static final int textView1=0x7f050013;
-        public static final int textView_error_id=0x7f050058;
-        public static final int textView_error_name=0x7f05005f;
-        public static final int textView_error_phone=0x7f050065;
-        public static final int textView_error_pwd=0x7f05005b;
-        public static final int textView_error_pwd2=0x7f05005d;
-        public static final int textView_id=0x7f05005a;
-        public static final int title=0x7f050014;
-        public static final int tl_calendar_monthly=0x7f050012;
-        public static final int txt=0x7f05006e;
-        public static final int viewpager_child=0x7f050021;
-        public static final int viewpager_teacher=0x7f050039;
+        public static final int Atext1=0x7f06001d;
+        public static final int Atext2=0x7f060025;
+        public static final int Atext3=0x7f06002d;
+        public static final int Atext4=0x7f060035;
+        public static final int CalendarMonthTxt=0x7f06000f;
+        public static final int Cost1=0x7f060017;
+        public static final int Cost2=0x7f06001f;
+        public static final int Cost3=0x7f060027;
+        public static final int Cost4=0x7f06002f;
+        public static final int CostFlipper1=0x7f06001c;
+        public static final int CostFlipper2=0x7f060024;
+        public static final int CostFlipper3=0x7f06002c;
+        public static final int CostFlipper4=0x7f060034;
+        public static final int CostLayout=0x7f060013;
+        public static final int CostTab1=0x7f060018;
+        public static final int CostTab2=0x7f060020;
+        public static final int CostTab3=0x7f060028;
+        public static final int CostTab4=0x7f060030;
+        public static final int CostimgBtn1=0x7f060019;
+        public static final int CostimgBtn2=0x7f06001a;
+        public static final int CostimgBtn3=0x7f060021;
+        public static final int CostimgBtn4=0x7f060022;
+        public static final int CostimgBtn5=0x7f060029;
+        public static final int CostimgBtn6=0x7f06002a;
+        public static final int CostimgBtn7=0x7f060031;
+        public static final int CostimgBtn8=0x7f060032;
+        public static final int Costlist1=0x7f06001e;
+        public static final int Costlist2=0x7f060026;
+        public static final int Costlist3=0x7f06002e;
+        public static final int Costlist4=0x7f060036;
+        public static final int Costtext1=0x7f06001b;
+        public static final int Costtext2=0x7f060023;
+        public static final int Costtext3=0x7f06002b;
+        public static final int Costtext4=0x7f060033;
+        public static final int CrudLayout=0x7f06003f;
+        public static final int GraphView1=0x7f060039;
+        public static final int GraphView2=0x7f06003c;
+        public static final int ID_Flipper=0x7f06008a;
+        public static final int ID_edit=0x7f060088;
+        public static final int ID_searchbutton=0x7f060089;
+        public static final int ImageView1=0x7f06006d;
+        public static final int LinearLayout1=0x7f06006a;
+        public static final int LinearLayout2=0x7f060069;
+        public static final int MapConnect=0x7f06003d;
+        public static final int RelativeLayout1=0x7f06006b;
+        public static final int School_Flipper=0x7f0600be;
+        public static final int School_List=0x7f0600bf;
+        public static final int School_edit=0x7f0600bc;
+        public static final int School_searchbutton=0x7f0600bd;
+        public static final int TextView1=0x7f06006c;
+        public static final int action_settings=0x7f0600d2;
+        public static final int alarm=0x7f060054;
+        public static final int birth=0x7f0600cd;
+        public static final int bottomtext=0x7f060095;
+        public static final int btn_calendar_nextmonth=0x7f060010;
+        public static final int btn_calendar_prevmonth=0x7f06000e;
+        public static final int btn_login=0x7f06000a;
+        public static final int btn_register=0x7f06000b;
+        public static final int btn_registerOK=0x7f0600b2;
+        public static final int btn_today=0x7f060011;
+        public static final int calendarView=0x7f0600b7;
+        public static final int contentFlipper=0x7f060045;
+        public static final int costButton=0x7f06003e;
+        public static final int costSum=0x7f060015;
+        public static final int cost_ID=0x7f060098;
+        public static final int country_fragment1=0x7f0600a0;
+        public static final int country_fragment3=0x7f0600c8;
+        public static final int date=0x7f060050;
+        public static final int delete_icon=0x7f060087;
+        public static final int des=0x7f06004f;
+        public static final int diaedit1=0x7f060056;
+        public static final int diaedit2=0x7f060058;
+        public static final int diatext1=0x7f060055;
+        public static final int diatext2=0x7f060057;
+        public static final int editText_birth_Day=0x7f0600ae;
+        public static final int editText_birth_Month=0x7f0600ad;
+        public static final int editText_birth_Year=0x7f0600ac;
+        public static final int editText_day=0x7f060053;
+        public static final int editText_id=0x7f0600a3;
+        public static final int editText_month=0x7f060052;
+        public static final int editText_name=0x7f0600aa;
+        public static final int editText_phone=0x7f0600b0;
+        public static final int editText_pwd=0x7f0600a5;
+        public static final int editText_pwd2=0x7f0600a8;
+        public static final int editText_type=0x7f0600af;
+        public static final int editText_year=0x7f060051;
+        public static final int edit_icon=0x7f060086;
+        public static final int fragalbum_item_date=0x7f06005d;
+        public static final int fragalbum_item_layout=0x7f06005b;
+        public static final int fragalbum_item_title=0x7f06005c;
+        public static final int fragmentCalendar=0x7f0600c5;
+        public static final int fragment_album_list=0x7f06005a;
+        public static final int fragment_album_title=0x7f060059;
+        public static final int fragment_scedule_evnets=0x7f0600c7;
+        public static final int fragment_scedule_homework=0x7f0600c6;
+        public static final int fragschedule_schedule_list_relative=0x7f06006e;
+        public static final int fragweather_item_weather_icon=0x7f06007d;
+        public static final int fragweather_item_weather_temphigh=0x7f060080;
+        public static final int fragweather_item_weather_templow=0x7f06007f;
+        public static final int fragweather_item_weather_text=0x7f06007e;
+        public static final int fragweather_item_weather_time=0x7f06007c;
+        public static final int fragweather_weatherlist=0x7f06007b;
+        public static final int fragweather_weathertime=0x7f06007a;
+        public static final int fragweather_weathertitle=0x7f060079;
+        public static final int homework=0x7f0600bb;
+        public static final int hybrid=0x7f060004;
+        public static final int id_editText=0x7f060007;
+        public static final int id_text=0x7f060006;
+        public static final int imageButton1=0x7f060037;
+        public static final int imageButton2=0x7f06003a;
+        public static final int image_Homewrite=0x7f0600b4;
+        public static final int img=0x7f0600cb;
+        public static final int img3=0x7f0600ce;
+        public static final int item_subtitle=0x7f06009e;
+        public static final int item_title=0x7f06009f;
+        public static final int linearLayout0=0x7f060061;
+        public static final int linearLayout1=0x7f060065;
+        public static final int listView=0x7f0600c9;
+        public static final int list_grade_text=0x7f0600c4;
+        public static final int list_id_text=0x7f0600c2;
+        public static final int list_name_text=0x7f0600c1;
+        public static final int list_profile_image=0x7f0600c3;
+        public static final int list_relative=0x7f0600b3;
+        public static final int list_school_text=0x7f0600c0;
+        public static final int login_text=0x7f060005;
+        public static final int main_Layout=0x7f06009b;
+        public static final int mapButton=0x7f0600a1;
+        public static final int map_lin=0x7f06009c;
+        public static final int name=0x7f0600cc;
+        public static final int nc_alarm=0x7f060072;
+        public static final int nc_d_day=0x7f060071;
+        public static final int nc_title=0x7f060070;
+        public static final int next_button=0x7f0600b9;
+        public static final int next_icon=0x7f0600d0;
+        public static final int next_schedule=0x7f06006f;
+        public static final int none=0x7f060000;
+        public static final int normal=0x7f060001;
+        public static final int password_editText=0x7f060009;
+        public static final int password_text=0x7f060008;
+        public static final int phone=0x7f0600cf;
+        public static final int prev_button=0x7f0600b8;
+        public static final int relativeLayout1=0x7f0600d1;
+        public static final int sample_content_fragment=0x7f06009a;
+        public static final int sample_main_layout=0x7f060099;
+        public static final int satellite=0x7f060002;
+        public static final int scedule_evnets_fragment=0x7f0600a2;
+        public static final int scedule_homework_fragment=0x7f06008f;
+        public static final int scedule_item_delete_icon=0x7f060075;
+        public static final int scedule_item_des=0x7f060076;
+        public static final int scedule_item_edit_icon=0x7f060074;
+        public static final int scedule_item_title=0x7f060073;
+        public static final int schedule_lin=0x7f0600b6;
+        public static final int schedule_map=0x7f06009d;
+        public static final int schedule_scroll=0x7f0600b5;
+        public static final int scrollView1=0x7f060016;
+        public static final int selectmonth=0x7f06000d;
+        public static final int sliding_tabs=0x7f060067;
+        public static final int sliding_tabs_child=0x7f06005e;
+        public static final int sliding_tabs_teacher=0x7f060077;
+        public static final int subtext=0x7f060097;
+        public static final int supllies=0x7f0600ba;
+        public static final int t_information=0x7f060044;
+        public static final int t_register=0x7f060043;
+        public static final int tab1_nextcontent=0x7f06008e;
+        public static final int tab1_nexttitle=0x7f06008d;
+        public static final int tab1_nowcontent=0x7f06008c;
+        public static final int tab1_nowtitle=0x7f06008b;
+        public static final int tab2_btn_search=0x7f060091;
+        public static final int tab2_edt_searchquery=0x7f060090;
+        public static final int tab2_list=0x7f060092;
+        public static final int tab2_youtube_fragment=0x7f060081;
+        public static final int tab2_ytlist_date=0x7f060085;
+        public static final int tab2_ytlist_image=0x7f060082;
+        public static final int tab2_ytlist_subtitle=0x7f060084;
+        public static final int tab2_ytlist_title=0x7f060083;
+        public static final int tab3_weather=0x7f060093;
+        public static final int tab4_desctext=0x7f060064;
+        public static final int tab4_fragment_album=0x7f060094;
+        public static final int tab4_gallery=0x7f060066;
+        public static final int tab4_imgview=0x7f060062;
+        public static final int tab4_linear=0x7f060060;
+        public static final int tab4_titletext=0x7f060063;
+        public static final int teacher_IDsearch=0x7f060040;
+        public static final int teacher_Schsearch=0x7f060041;
+        public static final int teacher_class=0x7f060049;
+        public static final int teacher_classcon=0x7f06004a;
+        public static final int teacher_contact=0x7f06004b;
+        public static final int teacher_contactcon=0x7f06004c;
+        public static final int teacher_image=0x7f060046;
+        public static final int teacher_name=0x7f060047;
+        public static final int teacher_namecon=0x7f060048;
+        public static final int teacher_today=0x7f06004d;
+        public static final int terrain=0x7f060003;
+        public static final int test_textView=0x7f06000c;
+        public static final int textView1=0x7f060014;
+        public static final int textView2=0x7f060038;
+        public static final int textView3=0x7f06003b;
+        public static final int textView_error_id=0x7f0600a4;
+        public static final int textView_error_name=0x7f0600ab;
+        public static final int textView_error_phone=0x7f0600b1;
+        public static final int textView_error_pwd=0x7f0600a7;
+        public static final int textView_error_pwd2=0x7f0600a9;
+        public static final int textView_id=0x7f0600a6;
+        public static final int title=0x7f06004e;
+        public static final int titleFlipper=0x7f060042;
+        public static final int tl_calendar_monthly=0x7f060012;
+        public static final int toptext=0x7f060096;
+        public static final int txt=0x7f0600ca;
+        public static final int viewpager=0x7f060068;
+        public static final int viewpager_child=0x7f06005f;
+        public static final int viewpager_teacher=0x7f060078;
     }
     public static final class integer {
-        public static final int google_play_services_version=0x7f070000;
+        public static final int google_play_services_version=0x7f080000;
     }
     public static final class layout {
         public static final int activity_login=0x7f030000;
         public static final int calendarview=0x7f030001;
-        public static final int dialog_homework=0x7f030002;
-        public static final int fragment_album=0x7f030003;
-        public static final int fragment_album_item=0x7f030004;
-        public static final int fragment_child=0x7f030005;
-        public static final int fragment_gallery=0x7f030006;
-        public static final int fragment_schedule=0x7f030007;
-        public static final int fragment_schedule_item=0x7f030008;
-        public static final int fragment_teacher=0x7f030009;
-        public static final int fragment_weather=0x7f03000a;
-        public static final int fragment_weather_item=0x7f03000b;
-        public static final int fragment_youtube=0x7f03000c;
-        public static final int fragment_youtube_list=0x7f03000d;
-        public static final int homework_listitem=0x7f03000e;
-        public static final int layout_tab1=0x7f03000f;
-        public static final int layout_tab2=0x7f030010;
-        public static final int layout_tab3=0x7f030011;
-        public static final int layout_tab4=0x7f030012;
-        public static final int layout_tab5=0x7f030013;
-        public static final int main_child=0x7f030014;
-        public static final int main_teacher=0x7f030015;
-        public static final int menu=0x7f030016;
-        public static final int pager_item=0x7f030017;
-        public static final int register=0x7f030018;
-        public static final int schedule_events=0x7f030019;
-        public static final int schedule_homework=0x7f03001a;
-        public static final int teacher_firsttab=0x7f03001b;
-        public static final int teacher_thirdtab=0x7f03001c;
-        public static final int teacher_thirdtab_studentslist=0x7f03001d;
-        public static final int teacher_thirdtab_studentsrow=0x7f03001e;
+        public static final int cost_detail=0x7f030002;
+        public static final int cost_item=0x7f030003;
+        public static final int crud_item=0x7f030004;
+        public static final int dialog_homework=0x7f030005;
+        public static final int dialog_interface=0x7f030006;
+        public static final int fragment_album=0x7f030007;
+        public static final int fragment_album_item=0x7f030008;
+        public static final int fragment_child=0x7f030009;
+        public static final int fragment_gallery=0x7f03000a;
+        public static final int fragment_sample=0x7f03000b;
+        public static final int fragment_schedule=0x7f03000c;
+        public static final int fragment_schedule_item=0x7f03000d;
+        public static final int fragment_teacher=0x7f03000e;
+        public static final int fragment_weather=0x7f03000f;
+        public static final int fragment_weather_item=0x7f030010;
+        public static final int fragment_youtube=0x7f030011;
+        public static final int fragment_youtube_list=0x7f030012;
+        public static final int homework_listitem=0x7f030013;
+        public static final int id_search=0x7f030014;
+        public static final int layout_tab1=0x7f030015;
+        public static final int layout_tab2=0x7f030016;
+        public static final int layout_tab3=0x7f030017;
+        public static final int layout_tab4=0x7f030018;
+        public static final int layout_tab5=0x7f030019;
+        public static final int list_row=0x7f03001a;
+        public static final int main_child=0x7f03001b;
+        public static final int main_parent=0x7f03001c;
+        public static final int main_teacher=0x7f03001d;
+        public static final int map_fragment=0x7f03001e;
+        public static final int menu=0x7f03001f;
+        public static final int pager_item=0x7f030020;
+        public static final int parent_firsttab=0x7f030021;
+        public static final int register=0x7f030022;
+        public static final int schedule_events=0x7f030023;
+        public static final int schedule_homework=0x7f030024;
+        public static final int schedule_item=0x7f030025;
+        public static final int school_search=0x7f030026;
+        public static final int school_search_list=0x7f030027;
+        public static final int teacher_firsttab=0x7f030028;
+        public static final int teacher_thirdtab=0x7f030029;
+        public static final int teacher_thirdtab_studentslist=0x7f03002a;
+        public static final int teacher_thirdtab_studentsrow=0x7f03002b;
     }
     public static final class menu {
-        public static final int login=0x7f0a0000;
+        public static final int login=0x7f0b0000;
     }
     public static final class string {
         /**  날씨 문자열 
          */
-        public static final int Weather_SKY_A01=0x7f06001d;
-        public static final int Weather_SKY_A02=0x7f06001e;
-        public static final int Weather_SKY_A03=0x7f06001f;
-        public static final int Weather_SKY_A04=0x7f060020;
-        public static final int Weather_SKY_A05=0x7f060021;
-        public static final int Weather_SKY_A06=0x7f060022;
-        public static final int Weather_SKY_A07=0x7f060023;
-        public static final int Weather_SKY_A08=0x7f060024;
-        public static final int Weather_SKY_A09=0x7f060025;
-        public static final int Weather_SKY_A10=0x7f060026;
-        public static final int Weather_SKY_A11=0x7f060027;
-        public static final int Weather_SKY_A12=0x7f060028;
-        public static final int Weather_SKY_A13=0x7f060029;
-        public static final int Weather_SKY_A14=0x7f06002a;
-        public static final int action_settings=0x7f06001c;
-        public static final int app_name=0x7f06001a;
+        public static final int Weather_SKY_A01=0x7f07001d;
+        public static final int Weather_SKY_A02=0x7f07001e;
+        public static final int Weather_SKY_A03=0x7f07001f;
+        public static final int Weather_SKY_A04=0x7f070020;
+        public static final int Weather_SKY_A05=0x7f070021;
+        public static final int Weather_SKY_A06=0x7f070022;
+        public static final int Weather_SKY_A07=0x7f070023;
+        public static final int Weather_SKY_A08=0x7f070024;
+        public static final int Weather_SKY_A09=0x7f070025;
+        public static final int Weather_SKY_A10=0x7f070026;
+        public static final int Weather_SKY_A11=0x7f070027;
+        public static final int Weather_SKY_A12=0x7f070028;
+        public static final int Weather_SKY_A13=0x7f070029;
+        public static final int Weather_SKY_A14=0x7f07002a;
+        public static final int action_settings=0x7f07001c;
+        public static final int app_name=0x7f07001a;
         /**   Title for notification shown when GooglePlayServices needs to be
         enabled for a application to work. [CHAR LIMIT=70] 
          */
-        public static final int auth_client_needs_enabling_title=0x7f060015;
+        public static final int auth_client_needs_enabling_title=0x7f070015;
         /**   Title for notification shown when GooglePlayServices needs to be
         installed for a application to work. [CHAR LIMIT=70] 
          */
-        public static final int auth_client_needs_installation_title=0x7f060016;
+        public static final int auth_client_needs_installation_title=0x7f070016;
         /**   Title for notification shown when GooglePlayServices needs to be
         udpated for a application to work. [CHAR LIMIT=70] 
          */
-        public static final int auth_client_needs_update_title=0x7f060017;
+        public static final int auth_client_needs_update_title=0x7f070017;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=42] 
          */
-        public static final int auth_client_play_services_err_notification_msg=0x7f060018;
+        public static final int auth_client_play_services_err_notification_msg=0x7f070018;
         /**   Requested by string saying which app requested the notification. [CHAR LIMIT=42] 
          */
-        public static final int auth_client_requested_by_msg=0x7f060019;
+        public static final int auth_client_requested_by_msg=0x7f070019;
         /**   Title for notification shown when a bad version of GooglePlayServices
         has been installed and needs correction for an application to work.
         [CHAR LIMIT=70] 
          */
-        public static final int auth_client_using_bad_version_title=0x7f060014;
+        public static final int auth_client_using_bad_version_title=0x7f070014;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_enable_button=0x7f060006;
+        public static final int common_google_play_services_enable_button=0x7f070006;
         /**  Message in confirmation dialog informing user they need to enable
         Google Play services in application settings [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_enable_text=0x7f060005;
+        public static final int common_google_play_services_enable_text=0x7f070005;
         /**  Title of confirmation dialog informing user they need to enable
         Google Play services in application settings [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_enable_title=0x7f060004;
+        public static final int common_google_play_services_enable_title=0x7f070004;
         /**  Button in confirmation dialog for installing Google Play services [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_install_button=0x7f060003;
+        public static final int common_google_play_services_install_button=0x7f070003;
         /**  (For phones) Message in confirmation dialog informing user that
         they need to install Google Play services (from Play Store) [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_install_text_phone=0x7f060001;
+        public static final int common_google_play_services_install_text_phone=0x7f070001;
         /**  (For tablets) Message in confirmation dialog informing user that
         they need to install Google Play services (from Play Store) [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_install_text_tablet=0x7f060002;
+        public static final int common_google_play_services_install_text_tablet=0x7f070002;
         /**  Title of confirmation dialog informing user that they need to install
         Google Play services (from Play Store) [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_install_title=0x7f060000;
+        public static final int common_google_play_services_install_title=0x7f070000;
         /**  Message in confirmation dialog informing the user that they provided an invalid account. [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_invalid_account_text=0x7f06000c;
+        public static final int common_google_play_services_invalid_account_text=0x7f07000c;
         /**  Title of confirmation dialog informing the user that they provided an invalid account. [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_invalid_account_title=0x7f06000b;
+        public static final int common_google_play_services_invalid_account_title=0x7f07000b;
         /**  Message in confirmation dialog informing the user that a network error occurred. [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_network_error_text=0x7f06000a;
+        public static final int common_google_play_services_network_error_text=0x7f07000a;
         /**  Title of confirmation dialog informing the user that a network error occurred. [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_network_error_title=0x7f060009;
+        public static final int common_google_play_services_network_error_title=0x7f070009;
         /**  Message in confirmation dialog informing user there is an unknown issue in Google Play
         services [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_unknown_issue=0x7f06000d;
+        public static final int common_google_play_services_unknown_issue=0x7f07000d;
         /**  Message in confirmation dialog informing user that date on the device is not correct,
     causing certificate checks to fail. [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_unsupported_date_text=0x7f060010;
+        public static final int common_google_play_services_unsupported_date_text=0x7f070010;
         /**  Message in confirmation dialog informing user that Google Play services is not supported on their device [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_unsupported_text=0x7f06000f;
+        public static final int common_google_play_services_unsupported_text=0x7f07000f;
         /**  Title of confirmation dialog informing user that Google Play services is not supported on their device [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_unsupported_title=0x7f06000e;
+        public static final int common_google_play_services_unsupported_title=0x7f07000e;
         /**  Button in confirmation dialog for updating Google Play services [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_update_button=0x7f060011;
+        public static final int common_google_play_services_update_button=0x7f070011;
         /**  Message in confirmation dialog informing user that they need to update
         Google Play services (from Play Store) [CHAR LIMIT=NONE] 
          */
-        public static final int common_google_play_services_update_text=0x7f060008;
+        public static final int common_google_play_services_update_text=0x7f070008;
         /**  Title of confirmation dialog informing user that they need to update
         Google Play services (from Play Store) [CHAR LIMIT=40] 
          */
-        public static final int common_google_play_services_update_title=0x7f060007;
+        public static final int common_google_play_services_update_title=0x7f070007;
         /**  Sign-in button text [CHAR LIMIT=15] 
          */
-        public static final int common_signin_button_text=0x7f060012;
+        public static final int common_signin_button_text=0x7f070012;
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
-        public static final int common_signin_button_text_long=0x7f060013;
-        public static final int hello_world=0x7f06001b;
+        public static final int common_signin_button_text_long=0x7f070013;
+        public static final int hello_world=0x7f07001b;
         /**  날씨 문자열 
  황 문자열 
          */
-        public static final int str_arrange=0x7f06002b;
-        public static final int str_assign=0x7f06002c;
-        public static final int str_costinfo=0x7f060031;
-        public static final int str_monthly=0x7f060032;
-        public static final int str_moreinfo=0x7f060030;
-        public static final int str_mychild=0x7f06002d;
-        public static final int str_next=0x7f06002e;
-        public static final int str_prev=0x7f06002f;
+        public static final int str_arrange=0x7f07002b;
+        public static final int str_assign=0x7f07002c;
+        public static final int str_costinfo=0x7f070031;
+        public static final int str_monthly=0x7f070032;
+        public static final int str_moreinfo=0x7f070030;
+        public static final int str_mychild=0x7f07002d;
+        public static final int str_next=0x7f07002e;
+        public static final int str_prev=0x7f07002f;
     }
     public static final class style {
         /** 
@@ -579,11 +701,11 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f090000;
+        public static final int AppBaseTheme=0x7f0a0000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f090001;
+        public static final int AppTheme=0x7f0a0001;
     }
     public static final class styleable {
         /** Attributes that can be used with a AdsAttrs.

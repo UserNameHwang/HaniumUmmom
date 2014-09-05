@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/CrudLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEEEEEEE"
+    android:orientation="vertical"
+    android:weightSum="1" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/view_border"
+        android:baselineAligned="false"
+        android:gravity="center" >
+
+        <LinearLayout
+            android:id="@+id/teacher_IDsearch"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.50"
+            android:gravity="center"
+            android:onClick="onID"
+            android:padding="10dp" >
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="#00000000"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/icon_find_user" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID 검색하기" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@drawable/view_border" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/teacher_Schsearch"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.50"
+            android:gravity="center"
+            android:onClick="onSchool"
+            android:padding="10dp" >
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="#00000000"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/icon_school" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="학교 검색하기" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/view_border"
+        android:orientation="vertical" >
+
+        <ViewFlipper
+            android:id="@+id/titleFlipper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp" >
+
+                <ImageButton
+                    android:id="@+id/imageButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="#FFFFFF"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/icon_next" />
+
+                <TextView
+                    android:id="@+id/t_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/imageButton1"
+                    android:text="선생님 등록" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp" >
+
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="#FFFFFF"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/icon_next" />
+
+                <TextView
+                    android:id="@+id/t_information"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toRightOf="@+id/imageButton2"
+                    android:text="선생님 정보" />
+            </RelativeLayout>
+        </ViewFlipper>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#ffbfbfbf"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <ViewFlipper
+            android:id="@+id/contentFlipper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="선생님을 등록해주세요." />
+            </LinearLayout>
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp" >
+
+                <ImageView
+                    android:id="@+id/teacher_image"
+                    android:layout_width="120dp"
+                    android:layout_height="160dp"
+                    android:background="@drawable/view_border"
+                    android:contentDescription="@string/app_name"
+                    android:src="@android:drawable/sym_def_app_icon" />
+
+                <TextView
+                    android:id="@+id/teacher_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/teacher_image"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_toRightOf="@+id/teacher_image"
+                    android:text="성명 : " />
+
+                <TextView
+                    android:id="@+id/teacher_namecon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/teacher_name"
+                    android:layout_alignBottom="@+id/teacher_name"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/teacher_name"
+                    android:text="김준석" />
+
+                <TextView
+                    android:id="@+id/teacher_class"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/teacher_name"
+                    android:layout_below="@+id/teacher_name"
+                    android:layout_marginTop="15dp"
+                    android:text="학년/반 : " />
+
+                <TextView
+                    android:id="@+id/teacher_classcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/teacher_class"
+                    android:layout_alignBottom="@+id/teacher_class"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/teacher_class"
+                    android:text="3학년/8반" />
+
+                <TextView
+                    android:id="@+id/teacher_contact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/teacher_class"
+                    android:layout_below="@+id/teacher_class"
+                    android:layout_marginTop="15dp"
+                    android:text="연락처 : " />
+
+                <TextView
+                    android:id="@+id/teacher_contactcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/teacher_contact"
+                    android:layout_below="@+id/teacher_contact"
+                    android:layout_marginTop="5dp"
+                    android:text="K.Lemoness@gmail.com" />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/teacher_image"
+                    android:layout_below="@+id/teacher_image"
+                    android:layout_marginTop="15dp"
+                    android:text="오늘의 한마디" />
+
+                <TextView
+                    android:id="@+id/teacher_today"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/textView1"
+                    android:layout_below="@+id/textView1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="15dp"
+                    android:text="오늘의 한마디가 없습니다." />
+            </RelativeLayout>
+            
+        </ViewFlipper>
+    </LinearLayout>
+
+</LinearLayout>

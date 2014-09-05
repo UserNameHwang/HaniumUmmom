@@ -1,11 +1,11 @@
 package ummom.parent.common;
 
 
-import ummom.parent.common.view.SlidingTabLayout;
+import ummom.parent.view.SlidingTabLayout;
 import ummom.parent.costPage.CircleGraphSetting;
 import ummom.parent.costPage.LineGraphSetting;
 
-import com.example.android.slidingtabsbasic.R;
+import ummom.login.R;
 import com.handstudio.android.hzgrapherlib.graphview.CircleGraphView;
 import com.handstudio.android.hzgrapherlib.graphview.LineGraphView;
 import com.handstudio.android.hzgrapherlib.vo.circlegraph.CircleGraphVO;
@@ -41,12 +41,12 @@ public class SlidingTabsBasicFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		return inflater.inflate(R.layout.fragment_sample, container, false);
+		return inflater.inflate(R.layout.fragment_parent, container, false);
 	}
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
-		mViewPager = (ViewPager) view.findViewById(R.id.viewpager);
+		mViewPager = (ViewPager) view.findViewById(R.id.viewpager_parent);
 
 		mViewPager.setAdapter(new SamplePagerAdapter());
 

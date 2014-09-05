@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/list_school_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/list_name_text"
+        android:layout_below="@+id/list_name_text"
+        android:layout_marginBottom="5dp"
+        android:text="school" />
+
+    <TextView
+        android:id="@+id/list_id_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/list_name_text"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/list_name_text"
+        android:text="id" />
+
+    <ImageView
+        android:id="@+id/list_profile_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:background="@drawable/view_border"
+        android:src="@drawable/alarm_gray" />
+
+    <TextView
+        android:id="@+id/list_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/list_profile_image"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/list_profile_image"
+        android:text="name"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/list_grade_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       	android:layout_marginLeft="10dp"
+        android:layout_alignBaseline="@+id/list_school_text"
+        android:layout_alignBottom="@+id/list_school_text"
+        android:layout_toRightOf="@+id/list_school_text"
+        android:text="grade" />
+
+</RelativeLayout>
