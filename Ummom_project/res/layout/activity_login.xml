@@ -1,96 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ummom_bg"
     android:orientation="vertical" >
-	
-    <TextView 
-        android:id="@+id/login_text"
+
+    <ImageView
+        android:id="@+id/Titleimage"
         android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/ummom_text" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="35dp"
-        android:text="LogIn"
-        android:gravity="center"
-        />
-	
-    
-    
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-        
-        <TextView
-            android:id="@+id/id_text"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:text="ID : "
-            android:gravity="right"
-            />
-        
-        <EditText 
-            android:id="@+id/id_editText"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-           	android:layout_toRightOf="@id/id_text"
-            />
-     	
-	     	
-    </RelativeLayout>
-	<RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-        
-       <TextView
-            android:id="@+id/password_text"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="password : "
-            android:textSize="15dp" 
-            android:gravity="right"
-            />
-       
-       <EditText 
-            android:id="@+id/password_editText"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-           android:layout_toRightOf="@id/password_text"
-            />
-       
-       
-       			
-     </RelativeLayout>
+        android:layout_below="@+id/Titleimage"
+        android:orientation="vertical" >
 
-	<Button
-	    android:id="@+id/btn_login"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:text="확인"
-	    android:textSize="15dp" 
-	    android:layout_gravity="center"
-	    />
-	
-	<Button
-	    android:id="@+id/btn_register"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:text="회원가입"
-	    android:textSize="15dp" 
-	    android:layout_gravity="center"
-	    />
+        <RelativeLayout
+            android:id="@+id/relativeLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:padding="20dp" >
 
-    <TextView
-           android:id="@+id/test_textView"
-           android:layout_width="250dp"
-           android:layout_height="wrap_content"
-           android:layout_marginLeft="15dp"
-           android:layout_marginTop="2dp"                
-           android:textColor="#ff1226"
-           android:textSize="11dp" >
-       </TextView>
-            
-     
-	
-		
-</LinearLayout>
+            <EditText
+                android:id="@+id/id_editText"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/view_border"
+                android:hint="ID" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="20dp" >
+
+            <EditText
+                android:id="@+id/password_editText"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@drawable/view_border"
+                android:hint="Password" >
+
+                <requestFocus />
+            </EditText>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="확인"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="회원가입"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+</RelativeLayout>

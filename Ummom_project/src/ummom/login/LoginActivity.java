@@ -4,6 +4,7 @@ import ummom.child.common.MainChild;
 import ummom.parent.common.MainParent;
 import ummom.teacher.register.RegisterActivity;
 import ummom.teacher.mainsliding.MainTeacher;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,6 +42,9 @@ public class LoginActivity extends Activity implements OnClickListener{
 		
 		btnRegister = (Button)findViewById(R.id.btn_register);
 		btnRegister.setOnClickListener(this);
+		
+		ActionBar bar = getActionBar();
+		bar.hide();
     }
 
 
