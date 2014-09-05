@@ -445,8 +445,8 @@ containing a value of this type.
         public static final int schedule_scroll=0x7f0600b5;
         public static final int scrollView1=0x7f060016;
         public static final int selectmonth=0x7f06000d;
-        public static final int sliding_tabs=0x7f060067;
         public static final int sliding_tabs_child=0x7f06005e;
+        public static final int sliding_tabs_parent=0x7f060067;
         public static final int sliding_tabs_teacher=0x7f060077;
         public static final int subtext=0x7f060097;
         public static final int supllies=0x7f0600ba;
@@ -497,8 +497,8 @@ containing a value of this type.
         public static final int tl_calendar_monthly=0x7f060012;
         public static final int toptext=0x7f060096;
         public static final int txt=0x7f0600ca;
-        public static final int viewpager=0x7f060068;
         public static final int viewpager_child=0x7f06005f;
+        public static final int viewpager_parent=0x7f060068;
         public static final int viewpager_teacher=0x7f060078;
     }
     public static final class integer {
@@ -516,7 +516,7 @@ containing a value of this type.
         public static final int fragment_album_item=0x7f030008;
         public static final int fragment_child=0x7f030009;
         public static final int fragment_gallery=0x7f03000a;
-        public static final int fragment_sample=0x7f03000b;
+        public static final int fragment_parent=0x7f03000b;
         public static final int fragment_schedule=0x7f03000c;
         public static final int fragment_schedule_item=0x7f03000d;
         public static final int fragment_teacher=0x7f03000e;

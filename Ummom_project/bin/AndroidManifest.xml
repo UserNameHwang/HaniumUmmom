@@ -67,11 +67,17 @@
         <uses-library android:name="com.google.android.maps" />
         <!-- google map -->
         
-        <activity android:name="ummom.child.common.MainChild"></activity>
         <activity android:name="ummom.teacher.mainsliding.MainTeacher"></activity>
-        <activity android:name="ummom.child.youtube.YoutubePlayer"></activity>
         <activity android:name="ummom.teacher.register.RegisterActivity"></activity>
+        
+        <activity android:name="ummom.child.youtube.YoutubePlayer"></activity>
+        <activity android:name="ummom.child.common.MainChild"></activity>
+        
         <activity android:name="ummom.parent.common.MainParent"></activity>
+        <activity android:name="ummom.parent.firstTab.MapActivity"></activity>
+        <activity android:name="ummom.parent.costPage.CostDetail"></activity>
+        <activity android:name="ummom.parent.managePage.IDSearch"></activity>
+        <activity android:name="ummom.parent.managePage.SchoolSearch"></activity>
         
     </application>
 

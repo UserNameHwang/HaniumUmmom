@@ -51,7 +51,7 @@ public class SlidingTabsBasicFragment extends Fragment {
 		mViewPager.setAdapter(new SamplePagerAdapter());
 
 		mSlidingTabLayout = (SlidingTabLayout) view
-				.findViewById(R.id.sliding_tabs);
+				.findViewById(R.id.sliding_tabs_parent);
 		mSlidingTabLayout.setViewPager(mViewPager);
 
 		ActionBar bar = getActivity().getActionBar();
