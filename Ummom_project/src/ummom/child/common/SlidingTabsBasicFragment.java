@@ -28,6 +28,7 @@ public class SlidingTabsBasicFragment extends Fragment {
 		return inflater.inflate(R.layout.fragment_child, container, false);
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onSaveInstanceState(savedInstanceState);

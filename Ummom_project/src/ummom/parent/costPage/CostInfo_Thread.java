@@ -1,6 +1,7 @@
 package ummom.parent.costPage;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 import org.apache.http.HttpEntity;
@@ -39,11 +40,12 @@ public class CostInfo_Thread extends AsyncTask<Void, Void, Void> {
 	@Override
 	protected Void doInBackground(Void... params) {
 		// TODO Auto-generated method stub
+		Calendar cal = Calendar.getInstance();
 		
 		HttpClient client = new DefaultHttpClient();
-
+		
 		String getURL = "http://14.63.212.236/index.php/cost/getCost/?id="
-				+ "pest" + "&month=" + 8;
+				+ "pest" + "&month=" + (cal.get(Calendar.MONTH)+1);
 
 		HttpConnectionParams.setConnectionTimeout(client.getParams(), 5000);
 		HttpGet get = new HttpGet(getURL);

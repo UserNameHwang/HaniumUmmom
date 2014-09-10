@@ -105,15 +105,18 @@ public class LoginActivity extends Activity implements OnClickListener{
         {
 			if(LoginModel.mb_type == teacher){
 				Intent intent = new Intent(LoginActivity.this, MainTeacher.class);
-				startActivity(intent);                
+				startActivity(intent);
+				overridePendingTransition(R.anim.page_appear, R.anim.page_donmove);
 			}
 			else if(LoginModel.mb_type == child){
 				Intent intent = new Intent(LoginActivity.this, MainChild.class);
 				startActivity(intent);
+				overridePendingTransition(R.anim.page_appear, R.anim.page_donmove);
 			}
 			else if(LoginModel.mb_type == parent){
 				Intent intent = new Intent(LoginActivity.this, MainParent.class);
 				startActivity(intent);
+				overridePendingTransition(R.anim.page_appear, R.anim.page_donmove);
 			}
         }
     }

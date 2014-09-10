@@ -83,15 +83,7 @@ public class SlidingTabsBasicFragment extends Fragment {
 		@Override
 		public CharSequence getPageTitle(int position) {
 
-			if (position == 0) {
-				return "Schedule";
-			} else if (position == 1) {
-				return "Cost";
-			} else if (position == 2) {
-				return "Infomation";
-			} else {
-				return "Commmon Sence";
-			}
+			return "";
 		}
 		
 		@Override
@@ -168,7 +160,26 @@ public class SlidingTabsBasicFragment extends Fragment {
 		public void finishUpdate(ViewGroup container) {
 			// TODO Auto-generated method stub
 			super.finishUpdate(container);
+			ActionBar bar = getActivity().getActionBar();
+			bar.setDisplayUseLogoEnabled(false);
 
+			switch(mSlidingTabLayout.getCursoredpage()){
+			case 0 :
+				bar.setTitle("일정 확인");
+				break;
+			case 1 :
+				bar.setTitle("지출 관리");
+				break;
+			case 2 :
+				bar.setTitle("선생님 정보");
+				break;
+			case 3 :
+				bar.setTitle("앨범 보기");
+				break;
+			default : 
+				bar.setTitle("error");
+				break;
+			}
 		}
 	}
 }

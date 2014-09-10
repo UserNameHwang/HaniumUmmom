@@ -103,7 +103,7 @@ public class IDSearch extends Activity {
 	public class TeacherInfo_Thread extends Thread {
 
 		private String ID;
-		private final int fail = 200;
+		private final int fail = 300;
 		private Bundle bundle;
 
 		public TeacherInfo_Thread(String ID) {

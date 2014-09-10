@@ -1,5 +1,6 @@
 package ummom.parent.view;
 
+import ummom.login.R;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
@@ -35,11 +36,12 @@ public class SlidingTabLayout extends HorizontalScrollView {
     }
 
     private static final int TITLE_OFFSET_DIPS = 24;
-    private static final int TAB_VIEW_PADDING_DIPS = 16;
-    private static final int TAB_VIEW_TEXT_SIZE_SP = 12;
+    private static final int TAB_VIEW_PADDING_DIPS = 33; // Right, Left
+    private static final int TAB_VIEW_PADDING_DIPS2 = 15; // Up, Down
 
     private int mTitleOffset;
-
+    private int mCursoredPage;
+    
     private int mTabViewLayoutId;
     private int mTabViewTextViewId;
 
@@ -138,11 +140,27 @@ public class SlidingTabLayout extends HorizontalScrollView {
      * {@link #setCustomTabView(int, int)}.
      */
     @SuppressLint("NewApi") 
-    protected TextView createDefaultTabView(Context context) {
+    protected TextView createDefaultTabView(Context context, int position) {
         TextView textView = new TextView(context);
         textView.setGravity(Gravity.CENTER);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, TAB_VIEW_TEXT_SIZE_SP);
-        textView.setTypeface(Typeface.DEFAULT_BOLD);
+        
+        switch(position){
+    	case 0:
+        	textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.tab1_calendar, 0, 0, 0);
+        	break;
+    	case 1:
+        	textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.tab5_wallet, 0, 0, 0);
+        	break;
+    	case 2:
+        	textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.tab3_addr, 0, 0, 0);
+        	break;
+    	case 3:
+        	textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.tab4_pic, 0, 0, 0);
+        	break;
+    	default:
+        	textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_launcher, 0, 0, 0);
+        	break;
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             // If we're running on Honeycomb or newer, then we can use the Theme's
@@ -159,7 +177,9 @@ public class SlidingTabLayout extends HorizontalScrollView {
         }
 
         int padding = (int) (TAB_VIEW_PADDING_DIPS * getResources().getDisplayMetrics().density);
-        textView.setPadding(padding, padding, padding, padding);
+        int padding2 = (int) (TAB_VIEW_PADDING_DIPS2 * getResources().getDisplayMetrics().density);
+
+        textView.setPadding(padding, padding2, padding, padding2);
 
         return textView;
     }
@@ -180,7 +200,7 @@ public class SlidingTabLayout extends HorizontalScrollView {
             }
 
             if (tabView == null) {
-                tabView = createDefaultTabView(getContext());
+                tabView = createDefaultTabView(getContext(), i);
             }
 
             if (tabTitleView == null && TextView.class.isInstance(tabView)) {
@@ -264,9 +284,14 @@ public class SlidingTabLayout extends HorizontalScrollView {
             if (mViewPagerPageChangeListener != null) {
                 mViewPagerPageChangeListener.onPageSelected(position);
             }
+            mCursoredPage = position;
             
         }
 
+    }
+    
+    public int getCursoredpage(){
+    	return mCursoredPage;
     }
 
     private class TabClickListener implements View.OnClickListener {

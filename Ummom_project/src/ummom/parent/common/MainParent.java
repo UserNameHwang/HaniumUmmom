@@ -206,8 +206,11 @@ public class MainParent extends FragmentActivity {
 		long interval = tempTime - backTime;
 
 		if (interval >= 0 && INTERVAL >= interval) {
-			android.os.Process.killProcess(android.os.Process.myPid());
 			super.onBackPressed();
+			
+			overridePendingTransition(R.anim.page_donmove, R.anim.page_disappear);
+			
+			finish();
 		} else {
 			backTime = tempTime;
 			Toast.makeText(MainParent.this, "'뒤로' 버튼을 한번 더 누르시면 종료됩니다.",

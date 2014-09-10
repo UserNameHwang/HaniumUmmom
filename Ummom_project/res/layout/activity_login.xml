@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ummom_bg"
+    android:background="#EEEEEE"
     android:orientation="vertical" >
 
     <ImageView
@@ -15,6 +15,7 @@
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/linearLayout2"
         android:layout_below="@+id/Titleimage"
         android:orientation="vertical" >
 
@@ -30,6 +31,7 @@
                 android:id="@+id/id_editText"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
+                android:padding="5dp"
                 android:background="@drawable/view_border"
                 android:hint="ID" />
         </RelativeLayout>
@@ -45,12 +47,12 @@
                 android:id="@+id/password_editText"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
+                android:padding="5dp"
                 android:background="@drawable/view_border"
                 android:hint="Password" >
-
-                <requestFocus />
             </EditText>
         </RelativeLayout>
+        
     </LinearLayout>
 
     <LinearLayout
@@ -58,8 +60,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout1"
         android:layout_centerHorizontal="true"
-        android:orientation="vertical"
-        android:gravity="center" >
+        android:gravity="center"
+        android:orientation="vertical" >
 
         <Button
             android:id="@+id/btn_login"

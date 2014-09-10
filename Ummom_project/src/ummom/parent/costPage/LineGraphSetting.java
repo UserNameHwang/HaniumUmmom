@@ -86,4 +86,14 @@ public class LineGraphSetting {
 		// R.drawable.bg);
 		return vo;
 	}
+	
+	private class Monthly_Info extends Thread
+	{
+		
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			
+		}
+	}
 }
