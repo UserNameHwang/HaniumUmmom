@@ -118,6 +118,8 @@ public class LoginActivity extends Activity implements OnClickListener{
 				startActivity(intent);
 				overridePendingTransition(R.anim.page_appear, R.anim.page_donmove);
 			}
+			
+			LoginModel.login_success=false;
         }
     }
     

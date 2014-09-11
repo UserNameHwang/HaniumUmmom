@@ -15,6 +15,9 @@ public final class R {
         public static final int page_disappear=0x7f040003;
         public static final int page_donmove=0x7f040004;
     }
+    public static final class array {
+        public static final int selected=0x7f090000;
+    }
     public static final class attr {
         /** 
     The size of the ad. It must be one of BANNER, FULL_BANNER, LEADERBOARD,
@@ -194,8 +197,8 @@ containing a value of this type.
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
     
          */
-        public static final int activity_horizontal_margin=0x7f090000;
-        public static final int activity_vertical_margin=0x7f090001;
+        public static final int activity_horizontal_margin=0x7f0a0000;
+        public static final int activity_vertical_margin=0x7f0a0001;
     }
     public static final class drawable {
         public static final int alarm_gray=0x7f020000;
@@ -336,29 +339,29 @@ containing a value of this type.
         public static final int LinearLayout2=0x7f060069;
         public static final int MapConnect=0x7f06003e;
         public static final int RelativeLayout1=0x7f06006b;
-        public static final int School_Flipper=0x7f0600be;
-        public static final int School_List=0x7f0600bf;
-        public static final int School_edit=0x7f0600bc;
-        public static final int School_searchbutton=0x7f0600bd;
+        public static final int School_Flipper=0x7f0600c0;
+        public static final int School_List=0x7f0600c1;
+        public static final int School_edit=0x7f0600be;
+        public static final int School_searchbutton=0x7f0600bf;
         public static final int TextView1=0x7f06006c;
         public static final int Titleimage=0x7f060005;
-        public static final int action_settings=0x7f0600d1;
+        public static final int action_settings=0x7f0600d3;
         public static final int alarm=0x7f060055;
-        public static final int birth=0x7f0600cd;
+        public static final int birth=0x7f0600cf;
         public static final int bottomtext=0x7f060095;
         public static final int btn_calendar_nextmonth=0x7f060011;
         public static final int btn_calendar_prevmonth=0x7f06000f;
         public static final int btn_login=0x7f06000c;
         public static final int btn_register=0x7f06000d;
-        public static final int btn_registerOK=0x7f0600b2;
+        public static final int btn_registerOK=0x7f0600b4;
         public static final int btn_today=0x7f060012;
-        public static final int calendarView=0x7f0600b7;
+        public static final int calendarView=0x7f0600b9;
         public static final int contentFlipper=0x7f060046;
         public static final int costButton=0x7f06003f;
         public static final int costSum=0x7f060016;
         public static final int cost_ID=0x7f060098;
         public static final int country_fragment1=0x7f0600a0;
-        public static final int country_fragment3=0x7f0600c8;
+        public static final int country_fragment3=0x7f0600ca;
         public static final int date=0x7f060051;
         public static final int delete_icon=0x7f060087;
         public static final int des=0x7f060050;
@@ -373,20 +376,20 @@ containing a value of this type.
         public static final int editText_id=0x7f0600a3;
         public static final int editText_month=0x7f060053;
         public static final int editText_name=0x7f0600aa;
-        public static final int editText_phone=0x7f0600b0;
+        public static final int editText_phone=0x7f0600b2;
         public static final int editText_pwd=0x7f0600a5;
         public static final int editText_pwd2=0x7f0600a8;
-        public static final int editText_type=0x7f0600af;
+        public static final int editText_type=0x7f0600b0;
         public static final int editText_year=0x7f060052;
         public static final int edit_icon=0x7f060086;
         public static final int fragalbum_item_date=0x7f06005e;
         public static final int fragalbum_item_layout=0x7f06005c;
         public static final int fragalbum_item_title=0x7f06005d;
-        public static final int fragmentCalendar=0x7f0600c5;
+        public static final int fragmentCalendar=0x7f0600c7;
         public static final int fragment_album_list=0x7f06005b;
         public static final int fragment_album_title=0x7f06005a;
-        public static final int fragment_scedule_evnets=0x7f0600c7;
-        public static final int fragment_scedule_homework=0x7f0600c6;
+        public static final int fragment_scedule_evnets=0x7f0600c9;
+        public static final int fragment_scedule_homework=0x7f0600c8;
         public static final int fragschedule_schedule_list_relative=0x7f06006e;
         public static final int fragweather_item_weather_icon=0x7f06007d;
         public static final int fragweather_item_weather_temphigh=0x7f060080;
@@ -396,41 +399,41 @@ containing a value of this type.
         public static final int fragweather_weatherlist=0x7f06007b;
         public static final int fragweather_weathertime=0x7f06007a;
         public static final int fragweather_weathertitle=0x7f060079;
-        public static final int homework=0x7f0600bb;
+        public static final int homework=0x7f0600bd;
         public static final int hybrid=0x7f060004;
         public static final int id_editText=0x7f060009;
         public static final int imageButton1=0x7f060038;
         public static final int imageButton2=0x7f06003b;
-        public static final int image_Homewrite=0x7f0600b4;
-        public static final int img=0x7f0600cb;
-        public static final int img3=0x7f0600ce;
+        public static final int image_Homewrite=0x7f0600b6;
+        public static final int img=0x7f0600cd;
+        public static final int img3=0x7f0600d0;
         public static final int item_subtitle=0x7f06009e;
         public static final int item_title=0x7f06009f;
         public static final int linearLayout0=0x7f060062;
         public static final int linearLayout1=0x7f060006;
         public static final int linearLayout2=0x7f060007;
-        public static final int listView=0x7f0600c9;
-        public static final int list_grade_text=0x7f0600c4;
-        public static final int list_id_text=0x7f0600c2;
-        public static final int list_name_text=0x7f0600c1;
-        public static final int list_profile_image=0x7f0600c3;
-        public static final int list_relative=0x7f0600b3;
-        public static final int list_school_text=0x7f0600c0;
+        public static final int listView=0x7f0600cb;
+        public static final int list_grade_text=0x7f0600c6;
+        public static final int list_id_text=0x7f0600c4;
+        public static final int list_name_text=0x7f0600c3;
+        public static final int list_profile_image=0x7f0600c5;
+        public static final int list_relative=0x7f0600b5;
+        public static final int list_school_text=0x7f0600c2;
         public static final int main_Layout=0x7f06009b;
         public static final int mapButton=0x7f0600a1;
         public static final int map_lin=0x7f06009c;
-        public static final int name=0x7f0600cc;
+        public static final int name=0x7f0600ce;
         public static final int nc_alarm=0x7f060072;
         public static final int nc_d_day=0x7f060071;
         public static final int nc_title=0x7f060070;
-        public static final int next_button=0x7f0600b9;
-        public static final int next_icon=0x7f0600d0;
+        public static final int next_button=0x7f0600bb;
+        public static final int next_icon=0x7f0600d2;
         public static final int next_schedule=0x7f06006f;
         public static final int none=0x7f060000;
         public static final int normal=0x7f060001;
         public static final int password_editText=0x7f06000b;
-        public static final int phone=0x7f0600cf;
-        public static final int prev_button=0x7f0600b8;
+        public static final int phone=0x7f0600d1;
+        public static final int prev_button=0x7f0600ba;
         public static final int relativeLayout1=0x7f060008;
         public static final int relativeLayout2=0x7f06000a;
         public static final int sample_content_fragment=0x7f06009a;
@@ -442,16 +445,17 @@ containing a value of this type.
         public static final int scedule_item_des=0x7f060076;
         public static final int scedule_item_edit_icon=0x7f060074;
         public static final int scedule_item_title=0x7f060073;
-        public static final int schedule_lin=0x7f0600b6;
+        public static final int schedule_lin=0x7f0600b8;
         public static final int schedule_map=0x7f06009d;
-        public static final int schedule_scroll=0x7f0600b5;
+        public static final int schedule_scroll=0x7f0600b7;
         public static final int scrollView1=0x7f060017;
         public static final int selectmonth=0x7f06000e;
         public static final int sliding_tabs_child=0x7f06005f;
         public static final int sliding_tabs_parent=0x7f060067;
         public static final int sliding_tabs_teacher=0x7f060077;
+        public static final int spinner=0x7f0600b1;
         public static final int subtext=0x7f060097;
-        public static final int supllies=0x7f0600ba;
+        public static final int supllies=0x7f0600bc;
         public static final int t_information=0x7f060045;
         public static final int t_register=0x7f060044;
         public static final int tab1_nextcontent=0x7f06008e;
@@ -487,9 +491,10 @@ containing a value of this type.
         public static final int textView1=0x7f060015;
         public static final int textView2=0x7f060039;
         public static final int textView3=0x7f06003c;
+        public static final int textView_error_birth=0x7f0600af;
         public static final int textView_error_id=0x7f0600a4;
         public static final int textView_error_name=0x7f0600ab;
-        public static final int textView_error_phone=0x7f0600b1;
+        public static final int textView_error_phone=0x7f0600b3;
         public static final int textView_error_pwd=0x7f0600a7;
         public static final int textView_error_pwd2=0x7f0600a9;
         public static final int textView_id=0x7f0600a6;
@@ -497,7 +502,7 @@ containing a value of this type.
         public static final int titleFlipper=0x7f060043;
         public static final int tl_calendar_monthly=0x7f060013;
         public static final int toptext=0x7f060096;
-        public static final int txt=0x7f0600ca;
+        public static final int txt=0x7f0600cc;
         public static final int viewpager_child=0x7f060060;
         public static final int viewpager_parent=0x7f060068;
         public static final int viewpager_teacher=0x7f060078;
@@ -552,7 +557,7 @@ containing a value of this type.
         public static final int teacher_thirdtab_studentsrow=0x7f03002b;
     }
     public static final class menu {
-        public static final int login=0x7f0b0000;
+        public static final int login=0x7f0c0000;
     }
     public static final class string {
         /**  날씨 문자열 
@@ -702,11 +707,11 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f0a0000;
+        public static final int AppBaseTheme=0x7f0b0000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f0a0001;
+        public static final int AppTheme=0x7f0b0001;
     }
     public static final class styleable {
         /** Attributes that can be used with a AdsAttrs.

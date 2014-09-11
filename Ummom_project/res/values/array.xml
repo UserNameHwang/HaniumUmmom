@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="selected">
+        <item>선택해주세요.</item>
+        <item>부모님</item>
+        <item>선생님</item>
+        <item>아이</item>
+    </string-array>
+</resources>

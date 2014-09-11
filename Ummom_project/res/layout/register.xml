@@ -1,261 +1,278 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EEEEEEEE"
-    android:orientation="vertical" 
     android:descendantFocusability="beforeDescendants"
-  	android:focusableInTouchMode="true"
-    >
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="Title"
-        android:textSize="30dp" />
+    android:focusableInTouchMode="true" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/view_border"
         android:orientation="vertical" >
 
-        <RelativeLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/edittext_border" >
-
-            <EditText
-                android:id="@+id/editText_id"
-                android:layout_width="250dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="13dp"
-                android:background="#ffffff"
-                android:hint="Email"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/textView_error_id"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editText_id"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="2dp"
-                
-                android:textColor="#ff1226"
-                android:textSize="11dp" >
-            </TextView>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/edittext_border" >
-
-            <EditText
-                android:id="@+id/editText_pwd"
-                android:layout_width="250dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="13dp"
-                android:layout_toRightOf="@+id/textView_id"
-                android:background="#ffffff"
-                android:hint="비밀번호"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/textView_error_pwd"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editText_pwd"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="2dp"
-                
-                android:textColor="#ff1226"
-                android:textSize="11dp" >
-            </TextView>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp" >
-
-            <EditText
-                android:id="@+id/editText_pwd2"
-                android:layout_width="250dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="13dp"
-                android:background="#ffffff"
-                android:hint="비밀번호 재입력"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/textView_error_pwd2"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editText_pwd2"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="2dp"
-                
-                android:textColor="#ff1226"
-                android:textSize="11dp" >
-            </TextView>
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="0dp"
-        android:background="@drawable/view_border"
-        android:orientation="vertical" >
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp" 
-            android:background="@drawable/edittext_border"
-            >
-
-            <EditText
-                android:id="@+id/editText_name"
-                android:layout_width="250dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="13dp"
-                android:background="#ffffff"
-                android:hint="이름"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/textView_error_name"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editText_name"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="2dp"
-                
-                android:textColor="#ff1226"
-                android:textSize="11dp" >
-            </TextView>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/edittext_border" >
-
-            <EditText
-                android:id="@+id/editText_birth_Year"
-                android:layout_width="100dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
-                android:background="#ffffff"
-                android:hint="년도"
-                android:textSize="15dp" />
-
-            <EditText
-                android:id="@+id/editText_birth_Month"
-                android:layout_width="100dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/editText_birth_Year"
-                android:background="#ffffff"
-                android:hint="월"
-                android:textSize="15dp" />
-
-            <EditText
-                android:id="@+id/editText_birth_Day"
-                android:layout_width="100dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/editText_birth_Month"
-                android:background="#ffffff"
-                android:hint="일"
-                android:textSize="15dp" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/edittext_border" >
-
-            <EditText
-                android:id="@+id/editText_type"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="#ffffff"
-                android:hint="Type" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="@drawable/edittext_border" >
-
-            <EditText
-                android:id="@+id/editText_phone"
-                android:layout_width="250dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="13dp"
-                android:background="#ffffff"
-                android:hint="폰번호"
-                android:inputType="number"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/textView_error_phone"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editText_phone"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="2dp"                
-                android:textColor="#ff1226"
-                android:textSize="11dp" >
-            </TextView>
-            
-            
-        </RelativeLayout>
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp" >
-
-        <Button
-            android:id="@+id/btn_registerOK"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:background="#6495ed"
+            android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="가입하기"
-            android:textColor="#ffffff" />
-    </RelativeLayout>
-   
-    
-</LinearLayout>
+            android:text="UmMom"
+            android:textSize="30dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/view_border"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edittext_border" >
+
+                <EditText
+                    android:id="@+id/editText_id"
+                    android:layout_width="250dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#ffffff"
+                    android:hint="Email"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/textView_error_id"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editText_id"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#ff1226"
+                    android:textSize="11dp" >
+                </TextView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edittext_border" >
+
+                <EditText
+                    android:id="@+id/editText_pwd"
+                    android:layout_width="250dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_toRightOf="@+id/textView_id"
+                    android:background="#ffffff"
+                    android:hint="비밀번호"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/textView_error_pwd"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editText_pwd"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#ff1226"
+                    android:textSize="11dp" >
+                </TextView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp" >
+
+                <EditText
+                    android:id="@+id/editText_pwd2"
+                    android:layout_width="250dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#ffffff"
+                    android:hint="비밀번호 재입력"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/textView_error_pwd2"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editText_pwd2"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#ff1226"
+                    android:textSize="11dp" >
+                </TextView>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/view_border"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edittext_border" >
+
+                <EditText
+                    android:id="@+id/editText_name"
+                    android:layout_width="250dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#ffffff"
+                    android:hint="이름"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/textView_error_name"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editText_name"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#ff1226"
+                    android:textSize="11dp" >
+                </TextView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edittext_border" >
+
+                <EditText
+                    android:id="@+id/editText_birth_Year"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#ffffff"
+                    android:hint="년도"
+                    android:inputType="number"
+                    android:textSize="15dp" />
+
+                <EditText
+                    android:id="@+id/editText_birth_Month"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/editText_birth_Year"
+                    android:background="#ffffff"
+                    android:hint="월"
+                    android:inputType="number"
+                    android:textSize="15dp" />
+
+                <EditText
+                    android:id="@+id/editText_birth_Day"
+                    android:layout_width="100dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/editText_birth_Month"
+                    android:background="#ffffff"
+                    android:hint="일"
+                    android:inputType="number"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/textView_error_birth"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editText_birth_Year"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#ff1226"
+                    android:textSize="11dp" >
+                </TextView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edittext_border" >
+
+                <TextView
+                    android:id="@+id/editText_type"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#ffffff"
+                    android:hint="Type"
+                    android:textSize="15dp" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_toRightOf="@+id/editText_type" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edittext_border" >
+
+                <EditText
+                    android:id="@+id/editText_phone"
+                    android:layout_width="250dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#ffffff"
+                    android:hint="폰번호"
+                    android:inputType="number"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/textView_error_phone"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editText_phone"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#ff1226"
+                    android:textSize="11dp" >
+                </TextView>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp" >
+
+            <Button
+                android:id="@+id/btn_registerOK"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#6495ed"
+                android:gravity="center"
+                android:text="가입하기"
+                android:textColor="#ffffff" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>
