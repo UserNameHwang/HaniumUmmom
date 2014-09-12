@@ -78,6 +78,7 @@
         <activity android:name="ummom.parent.costPage.CostDetail"></activity>
         <activity android:name="ummom.parent.managePage.IDSearch"></activity>
         <activity android:name="ummom.parent.managePage.SchoolSearch"></activity>
+        <activity android:name="ummom.teacher.thridTab.StudentsDetail"></activity>
         
     </application>
 

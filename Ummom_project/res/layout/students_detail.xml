@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#EEEEEEEE" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@drawable/sample_view7" >
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_studetns_detail_child"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/view_border"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:text="아이정보"
+                android:textSize="15dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/list_students_detail_top" >
+
+                <ImageView
+                    android:id="@+id/imgV_students_detail_Childname"
+                    android:layout_width="25dp"
+                    android:layout_height="23dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/blue_user" />
+
+                <TextView
+                    android:id="@+id/textView_detail_Childname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/imgV_students_detail_Childname"
+                    android:paddingBottom="10dp"
+                    android:text="이름 : 김인창"
+                    android:textSize="18dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/list_students_detail_bottom"
+                android:paddingTop="10dp" >
+
+                <ImageView
+                    android:id="@+id/imgV_students_detail_Childphone"
+                    android:layout_width="25dp"
+                    android:layout_height="23dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/blue_touchscreen" />
+
+                <TextView
+                    android:id="@+id/textV_students_detail_Childphone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_toRightOf="@+id/imgV_students_detail_Childphone"
+                    android:text="번호 : 010-3306-5990"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/textV_students_detail_Childphone"
+                    android:layout_below="@+id/textV_students_detail_Childphone"
+                    android:layout_marginTop="3dp"
+                    android:text="Mobile"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/blue_phone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/list_students_detail_bottom"
+                android:paddingTop="5dp" >
+
+                <ImageView
+                    android:id="@+id/imgV_students_detail_Childpbirth"
+                    android:layout_width="25dp"
+                    android:layout_height="23dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/blue_birth" />
+
+                <TextView
+                    android:id="@+id/textV_students_detail_birth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/imgV_students_detail_Childpbirth"
+                    android:paddingBottom="10dp"
+                    android:text="생일 : 1991-02-27"
+                    android:textSize="18dp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_studetns_detail_parnet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/view_border"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp"
+                android:text="부모정보"
+                android:textSize="15dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/list_students_detail_top" >
+
+                <ImageView
+                    android:id="@+id/imgV_students_detail_Parentname"
+                    android:layout_width="25dp"
+                    android:layout_height="23dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/blue_user" />
+
+                <TextView
+                    android:id="@+id/textView_detail_Parentname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/imgV_students_detail_Parentname"
+                    android:paddingBottom="10dp"
+                    android:text="이름 : 김인창"
+                    android:textSize="18dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/list_students_detail_bottom"
+                android:paddingTop="10dp" >
+
+                <ImageView
+                    android:id="@+id/imgV_students_detail_Parentphone"
+                    android:layout_width="25dp"
+                    android:layout_height="23dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/blue_touchscreen" />
+
+                <TextView
+                    android:id="@+id/textV_students_detail_Parentphone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_toRightOf="@+id/imgV_students_detail_Parentphone"
+                    android:text="번호 : 010-3306-5990"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/textV_students_detail_Parentphone"
+                    android:layout_below="@+id/textV_students_detail_Parentphone"
+                    android:layout_marginTop="3dp"
+                    android:text="Mobile"
+                    android:textSize="15dp" />
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/blue_phone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/list_students_detail_bottom"
+                android:paddingTop="5dp" >
+
+                <ImageView
+                    android:id="@+id/imgV_students_detail_Parentpbirth"
+                    android:layout_width="25dp"
+                    android:layout_height="23dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/blue_birth" />
+
+                <TextView
+                    android:id="@+id/textV_students_detail_Parentbirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/imgV_students_detail_Parentpbirth"
+                    android:paddingBottom="10dp"
+                    android:text="생일 : 1991-02-27"
+                    android:textSize="18dp" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

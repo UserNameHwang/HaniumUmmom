@@ -6,17 +6,23 @@ import java.util.List;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AlphabetIndexer;
 import android.widget.BaseAdapter;
+import android.widget.SectionIndexer;
 
-public class StudentsListAdapter extends BaseAdapter {
+public class StudentsListAdapter extends BaseAdapter implements SectionIndexer{
 	
 	private Context mContext;
 
 	private List<StudentsItem> mItems = new ArrayList<StudentsItem>();
 	
+	private AlphabetIndexer mIndexer;
+	
 	
 	public StudentsListAdapter(Context context){
-		mContext = context;		
+		mContext = context;
+		
+		
 	}
 
 	public void addItem(StudentsItem it){
@@ -44,6 +50,8 @@ public class StudentsListAdapter extends BaseAdapter {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -64,5 +72,23 @@ public class StudentsListAdapter extends BaseAdapter {
 		}
 
 		return stuView;
+	}
+
+	@Override
+	public int getPositionForSection(int arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getSectionForPosition(int arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Object[] getSections() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

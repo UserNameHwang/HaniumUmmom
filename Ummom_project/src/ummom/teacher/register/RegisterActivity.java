@@ -388,10 +388,9 @@ public class RegisterActivity extends Activity implements OnTouchListener {
 	}
 
 	public void comparePWD() {
-
+		
 		String pwd = edit_pwd.getText().toString();
 		String pwd2 = edit_pwd2.getText().toString();
-
 		if (pwd.equals(pwd2)) {
 
 			if (pwd.equals("")) {
@@ -405,6 +404,7 @@ public class RegisterActivity extends Activity implements OnTouchListener {
 			textView_error_pwd.setText("");
 			textView_error_pwd2.setText("비밀번호가 틀립니다.");
 		}
+		
 	}
 
 }

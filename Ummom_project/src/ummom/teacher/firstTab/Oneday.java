@@ -147,6 +147,7 @@ public class Oneday extends View {
     }
     public void setBgDayPaint(int color){
         this.bgDayPaint.setColor(color);
+        this.invalidate();
     }
     public void setBgSelectedDayPaint(int color){
         this.bgSelectedDayPaint.setColor(color);

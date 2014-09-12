@@ -12,35 +12,44 @@
         android:layout_height="wrap_content" 
         android:layout_marginTop="5dp"
         >
+        <TextView
+            android:id="@+id/schedule_id"
+            android:layout_width="187dp"
+            android:layout_height="30dp"
+            android:text="schedule_id"
+           	android:visibility="gone"
+            android:textSize="15dp" 
+            
+            />
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/textView_Schedulelist_title"
             android:layout_width="187dp"
             android:layout_height="30dp"
             android:text="Title"
             android:textSize="15dp" />
 
         <ImageView
-            android:id="@+id/edit_icon"
+            android:id="@+id/img_icon_edit"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginRight="15dp"          
-            android:layout_toRightOf="@+id/title"
+            android:layout_toRightOf="@+id/textView_Schedulelist_title"
             android:src="@drawable/eraser_darkgray"
             />
         
         <ImageView
-            android:id="@+id/delete_icon"
+            android:id="@+id/img_icon_delete"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@+id/edit_icon"
+            android:layout_toRightOf="@+id/img_icon_edit"
             android:src="@drawable/trash_darkgray"
             />
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/des"
+        android:id="@+id/textView_Schedulelist_des"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:text="sub_Title"

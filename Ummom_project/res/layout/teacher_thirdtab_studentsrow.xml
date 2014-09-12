@@ -98,7 +98,7 @@
             android:layout_toRightOf="@+id/relativeLayout1"
             android:contentDescription="@string/hello_world"            
             android:layout_marginRight="10dp"
-            android:src="@drawable/info_grey" />
+            android:src="@drawable/info_g" />
     </RelativeLayout>
 
 </LinearLayout>

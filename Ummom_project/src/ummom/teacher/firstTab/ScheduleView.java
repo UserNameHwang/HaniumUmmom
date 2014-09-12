@@ -26,8 +26,8 @@ public class ScheduleView extends LinearLayout{
 		description = (TextView) findViewById(R.id.des);
 		description.setText(item.getDescription());
 		
-		edit = (ImageView) findViewById(R.id.edit_icon);
-		delete = (ImageView) findViewById(R.id.delete_icon);
+		edit = (ImageView) findViewById(R.id.img_icon_edit);
+		delete = (ImageView) findViewById(R.id.img_icon_delete);
 		
 	}
 	

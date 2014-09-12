@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import ummom.teacher.view.SlidingTabLayout;
-import ummom.teacher.mainsliding.SlidingTabsBasicFragment;
-import ummom.login.LoginModel;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import ummom.login.R;
+import ummom.teacher.mainsliding.SlidingTabsBasicFragment;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -64,16 +64,14 @@ public class CalendarFragment extends Fragment implements OnClickListener {
     
     static Oneday tmp= null;
     static String touchDay = "";
+    static String click_date;
     
-	private DisplayMetrics dm;
-
+    
     View calView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
     		Bundle savedInstanceState) {
     	// TODO Auto-generated method stub
-    	
-		dm = getResources().getDisplayMetrics();
     	
     	calView = inflater.inflate(R.layout.calendarview, container,false);
 
@@ -177,8 +175,11 @@ public class CalendarFragment extends Fragment implements OnClickListener {
  
  
  
+    @SuppressLint("ClickableViewAccessibility") 
     private void makeCalendar(int month)
-    {	
+    {
+    	
+    	
     	final Oneday[] oneday = new Oneday[daylist.size()];
     	
         final Calendar today = Calendar.getInstance();
@@ -192,12 +193,10 @@ public class CalendarFragment extends Fragment implements OnClickListener {
         dayCnt = 0;
         int maxRow = ((daylist.size() > 42)? 7:6);
         int maxColumn = 7;
-		
-		int pixel = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 342, dm);
-		int hpixel = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 450, dm);
-
-        oneday_width = pixel;
-        oneday_height = hpixel;
+ 
+ 
+        oneday_width = 1020;
+        oneday_height = 1300;
         
         oneday_height = ((((oneday_height >= oneday_width)?oneday_height:oneday_width) - tl.getTop()) / (maxRow+1))-10;
         oneday_width = (oneday_width / maxColumn)+1;
@@ -299,11 +298,12 @@ public class CalendarFragment extends Fragment implements OnClickListener {
                             oneday[dayCnt].setYear(iYear);
                         }                       
                         
-                        oneday[dayCnt].setOnTouchListener(new OnTouchListener() {                    	
-                            @Override
-                            public boolean onTouch(View v, MotionEvent event) {
-                            	
-                            	if( (this_month+1) > Calendar.DECEMBER ){
+                        oneday[dayCnt].setOnClickListener(new OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								if( (this_month+1) > Calendar.DECEMBER ){
                             		next_month = 1;
                             		next_year = today.get(Calendar.YEAR) + 1;
                             	}else{
@@ -313,12 +313,8 @@ public class CalendarFragment extends Fragment implements OnClickListener {
                             	
                             	Toast.makeText(getActivity().getBaseContext(), "Touch2 -> "+ next_year +"-"+ next_month +"-"+oneday[v.getId()].getTextDay(), Toast.LENGTH_LONG).show();
    
-                            	ScheduleEventsFragment eventsFrag = (ScheduleEventsFragment) getFragmentManager().findFragmentById(R.id.fragment_scedule_evnets);
-                            	eventsFrag.setOnView("sample");
-                            	
-                                return false;
-                            }                        
-                        });
+							}
+						});
                     // 현재 달 블력 표시
                     }else{
                         oneday[dayCnt].setTextDaySize(55);
@@ -326,6 +322,7 @@ public class CalendarFragment extends Fragment implements OnClickListener {
                         oneday[dayCnt].setMonth(iMonth);
                         
                          
+                        
                         //오늘 표시
                         if(oneday[dayCnt].getDay() == today.get(Calendar.DAY_OF_MONTH)
                                 && oneday[dayCnt].getMonth() == today.get(Calendar.MONTH)
@@ -334,8 +331,7 @@ public class CalendarFragment extends Fragment implements OnClickListener {
                              	oneday[dayCnt].isToday = true;
                                 actlist.set(dayCnt,"오늘");
                                 oneday[dayCnt].invalidate();
-                                mSelect = dayCnt;
-                                
+                                mSelect = dayCnt;                            
                                  
                                 
                                 int year = today.get(Calendar.YEAR);
@@ -350,7 +346,8 @@ public class CalendarFragment extends Fragment implements OnClickListener {
                                 
                                 touchDay = Integer.toString(year) + "-" + 
                                 Integer.toString(month1) + "-" + Integer.toString(day);
-                            	
+                                
+                                click_date = touchDay;
                         }
                         
                         this_month = oneday[dayCnt].getMonth() + 1;
@@ -369,25 +366,62 @@ public class CalendarFragment extends Fragment implements OnClickListener {
                             		this_month = oneday[dayCnt].getMonth();
                             	}             	
                             	
-								if(tmp == null){
-                            		
+								if(tmp == null){                            		
                             		oneday[v.getId()].setBgDayPaint(Color.BLUE);
                             		tmp = oneday[v.getId()];
-                            		calView.invalidate();
+                            		
+                            		
+                            		//v.refreshDrawableState();
                             		
                             	}else{
-                            		Log.d("@", "click 2");
                             		tmp.setBgDayPaint(Color.WHITE);
                             		oneday[v.getId()].setBgDayPaint(Color.BLUE);
                             		tmp = oneday[v.getId()];
-                            		calView.invalidate();
+                            		
+                            		
+                            		//v.refreshDrawableState();
                             	}
 						
-                            	String click_date = iYear +"-"+ this_month
-                            			+"-"+oneday[v.getId()].getTextDay();
+                            	click_date = iYear +"-"+ this_month+"-"+oneday[v.getId()].getTextDay();
                             	
-                            	ScheduleEventsFragment eventsFrag = (ScheduleEventsFragment) getFragmentManager().findFragmentById(R.id.fragment_scedule_evnets);
-                            	eventsFrag.setOnView(click_date);
+                            	CalendarThread calendarthread = new CalendarThread(click_date, "test");
+                            	
+                            	calendarthread.start();
+                            	
+                            	try {
+                            		ScheduleHomeworkFragment homefrag = (ScheduleHomeworkFragment) getFragmentManager().findFragmentById(R.id.fragment_scedule_homework);
+                                	ScheduleEventsFragment eventsfrag = (ScheduleEventsFragment) getFragmentManager().findFragmentById(R.id.fragment_scedule_evnets);
+									calendarthread.join();									
+									homefrag.viewClear();
+									eventsfrag.viewClear();
+									
+									if (calendarthread.getCount() > 0) {
+										JSONArray array = calendarthread.getJarray();										
+										for(int i=0; i < calendarthread.getCount() ; i++){											
+											JSONObject tmp = array.getJSONObject(i);											
+											int type = Integer.parseInt(tmp.getString("schedule_type"));											
+											if(type == 1){
+												homefrag.setOnView(tmp.getString("schedule_title"), 
+														tmp.getString("schedule_des"), tmp.getString("schedule_id"));
+											}else{
+												eventsfrag.setOnView(tmp.getString("schedule_title"), 
+														tmp.getString("schedule_des"), tmp.getString("schedule_id"));
+											}		
+											
+										}
+									}else {
+										
+									}
+									
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								} catch (JSONException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+                            	
+                            	
                             }
 						});
                         
