@@ -1,12 +1,12 @@
 package ummom.parent.firstTab;
 
 
-public class SceduleItem {
+public class ScheduleItem {
 	
 	String title;
 	String description;
 	
-	public SceduleItem(String title, String des){
+	public ScheduleItem(String title, String des){
 		this.title = title;
 		this.description = des;
 	}

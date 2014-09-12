@@ -7,11 +7,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#EEEEEEEE"
-        android:orientation="vertical"
-        android:gravity="center" >
+        android:orientation="vertical" >
 
         <fragment
-            android:id="@+id/country_fragment1"
+            android:id="@+id/fragmentCalendar2"
             android:name="ummom.parent.firstTab.CalendarFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,7 +24,7 @@
             android:id="@+id/MapConnect"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-           android:layout_marginLeft="10dp"
+           	android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
@@ -59,8 +58,8 @@
         </RelativeLayout>
 
         <fragment
-            android:id="@+id/scedule_homework_fragment"
-            android:name="ummom.parent.firstTab.SceduleHomeworkFragment"
+            android:id="@+id/fragment_scedule_homework"
+            android:name="ummom.parent.firstTab.ScheduleHomeworkFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -70,8 +69,8 @@
              />
         
         <fragment
-            android:id="@+id/scedule_evnets_fragment"
-            android:name="ummom.parent.firstTab.SceduleEventsFragment"
+            android:id="@+id/fragment_scedule_evnets"
+            android:name="ummom.parent.firstTab.ScheduleEventsFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -83,3 +82,5 @@
     </LinearLayout>
 
 </ScrollView>
+
+

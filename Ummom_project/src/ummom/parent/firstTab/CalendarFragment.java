@@ -4,19 +4,23 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import ummom.login.R;
- 
+import ummom.teacher.mainsliding.SlidingTabsBasicFragment;
+
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,8 +28,10 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.TableRow.LayoutParams;
+import android.widget.Toast;
  
 
+@SuppressLint("NewApi") 
 public class CalendarFragment extends Fragment implements OnClickListener {
 	
 	private Calendar rightNow;
@@ -47,16 +53,26 @@ public class CalendarFragment extends Fragment implements OnClickListener {
     private int mSelect = -1;
      
     private Oneday basisDay;
-    private int during;
+    
+    
+    private static int this_month=0;
+    private static int prev_month=0;
+    private static int prev_year =0;
+    
+    private static int next_month=0;
+    private static int next_year =0;
+    
+    static Oneday tmp= null;
+    static String touchDay = "";
+    static String click_date;
+    
     
     View calView;
-    DisplayMetrics dm;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
     		Bundle savedInstanceState) {
     	// TODO Auto-generated method stub
-    	dm = getResources().getDisplayMetrics();
-
+    	
     	calView = inflater.inflate(R.layout.calendarview, container,false);
 
         rightNow = Calendar.getInstance();
@@ -77,62 +93,10 @@ public class CalendarFragment extends Fragment implements OnClickListener {
         makeCalendardata(iYear, iMonth);
          
         basisDay = new Oneday(calView.getContext());
-        
-        /*
-        Intent intent = getIntent();
-        int[] b = intent.getIntArrayExtra("basisDay");
-        during = intent.getIntExtra("during", 0);
-        if(b != null){
-            basisDay.setYear(b[0]);
-            basisDay.setMonth(b[1]);
-            basisDay.setDay(b[2]);
-        } else {
-            Calendar cal = Calendar.getInstance();
-            basisDay.setYear(cal.get(Calendar.YEAR));
-            basisDay.setMonth(cal.get(Calendar.MONTH));
-            basisDay.setDay(cal.get(Calendar.DAY_OF_MONTH));
-        }
-        
-    	*/
     	
     	return calView;
     }
    
-    
-    /**
-     * 서브 클래스에서 오버라이드 해서 터치한 날짜 입력 받기
-     * @param oneday
-     */    
-    protected void onTouched(Oneday touchedDay){
-         /*
-        if(isInside(touchedDay, basisDay, during)){
-            Calendar cal = Calendar.getInstance();
-            cal.set(basisDay.getYear(), basisDay.getMonth(), basisDay.getDay());
-            cal.add(Calendar.DAY_OF_MONTH,during);
-            Toast.makeText(this, (cal.get(Calendar.MONTH) + 1)+"월"+
-                    cal.get(Calendar.DAY_OF_MONTH) + "일 이후 선택 가능", Toast.LENGTH_SHORT).show();
-            return;
-        }
-         
-        final String year = String.valueOf(touchedDay.getYear());
-        final String month = doubleString(touchedDay.getMonth() + 1);
-        final String date = doubleString(touchedDay.getDay());
-         
-        AlertDialog.Builder builder =  new AlertDialog.Builder(CalendarView.this);
-        builder.setTitle("다음 날짜로 설정하시겠습니까?");
-        builder.setMessage(year + "." + month + "." + date + "(" + touchedDay.getDayOfWeekKorean()+")");
-        builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface arg0, int arg1) {
-               /* Intent intent = new Intent();
-                intent.putExtra("date", year + "." + month + "." + date);
-                setResult(RESULT_OK, intent);
-                finish();
-            }
-        });
-        builder.setNegativeButton("아니오", null);
-        builder.show();*/
-    }    
     
     /////////////////////////// Start /////////////////////////////////
   //달력의 일자를 표시한다. 
@@ -206,16 +170,24 @@ public class CalendarFragment extends Fragment implements OnClickListener {
             }
         }
  
-        makeCalendar();
+        makeCalendar(thisMonth);
     }
  
  
  
-    private void makeCalendar()
+    @SuppressLint("ClickableViewAccessibility") 
+    private void makeCalendar(int month)
     {
-        final Oneday[] oneday = new Oneday[daylist.size()];
+    	
+    	
+    	final Oneday[] oneday = new Oneday[daylist.size()];
+    	
         final Calendar today = Calendar.getInstance();
-        TableLayout tl =(TableLayout)calView.findViewById(R.id.tl_calendar_monthly);
+        
+        
+        this_month = month;
+        
+        final TableLayout tl =(TableLayout)calView.findViewById(R.id.tl_calendar_monthly);
         tl.removeAllViews();
  
         dayCnt = 0;
@@ -223,11 +195,8 @@ public class CalendarFragment extends Fragment implements OnClickListener {
         int maxColumn = 7;
  
  
-		int pixel = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 342, dm);
-		int hpixel = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 450, dm);
-
-        oneday_width = pixel;
-        oneday_height = hpixel;
+        oneday_width = 1020;
+        oneday_height = 1300;
         
         oneday_height = ((((oneday_height >= oneday_width)?oneday_height:oneday_width) - tl.getTop()) / (maxRow+1))-10;
         oneday_width = (oneday_width / maxColumn)+1;
@@ -254,116 +223,220 @@ public class CalendarFragment extends Fragment implements OnClickListener {
                 //요일 표시줄 설정
                 if(dayCnt >= 0 && dayCnt < 7)
                 {
-            		int tpixel = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, dm);
-
                     oneday[dayCnt].setBgDayPaint(Color.parseColor("#6495ed")); //배경색상 
                     oneday[dayCnt].setTextDayTopPadding(15); //일자표시 할때 top padding 
                     oneday[dayCnt].setTextDayColor(Color.WHITE); //일자의 글씨 색상 
-                    oneday[dayCnt].setTextDaySize(tpixel); //일자의 글씨크기 40
+                    oneday[dayCnt].setTextDaySize(40); //일자의 글씨크기 
                     oneday[dayCnt].setLayoutParams(new LayoutParams(oneday_width,55)); //일자 컨트롤 크기 
                     oneday[dayCnt].isToday = false;
                      
                 }else{
-            		int tpixel = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 7, dm);
-
+                     
                     oneday[dayCnt].isToday = false;
-                    oneday[dayCnt].setDayOfWeek(dayCnt%7 + 1);
+                    oneday[dayCnt].setDayOfWeek(dayCnt % 7 + 1);
                     oneday[dayCnt].setDay(Integer.valueOf(daylist.get(dayCnt)).intValue());
-                    oneday[dayCnt].setTextActcntSize(tpixel);
+                    
+                    /* 오늘 이라고 표시 */
+                    oneday[dayCnt].setTextActcntSize(25);
                     oneday[dayCnt].setTextActcntColor(Color.RED);
                     oneday[dayCnt].setTextActcntTopPadding(35);
                     oneday[dayCnt].setBgSelectedDayPaint(Color.rgb(0, 162, 232));
-                    oneday[dayCnt].setBgTodayPaint(Color.LTGRAY);
+                    oneday[dayCnt].setBgTodayPaint(Color.WHITE);
                     oneday[dayCnt].setBgActcntPaint(Color.rgb(251, 247, 176));
                     oneday[dayCnt].setLayoutParams(new LayoutParams(oneday_width,oneday_height));
                     
-                    int ttpixel = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 12, dm);
                     //이전 달 블럭 표시
                     if(actlist.get(dayCnt).equals("p")){
-                		
-
-                         oneday[dayCnt].setTextDaySize(ttpixel);
+                         oneday[dayCnt].setTextDaySize(35);
                          actlist.set(dayCnt, "");
                          oneday[dayCnt].setTextDayTopPadding(-4);
-                          
+                         
                          if(iMonth - 1 < Calendar.JANUARY){
-                             oneday[dayCnt].setMonth(Calendar.DECEMBER);
+                             oneday[dayCnt].setMonth(Calendar.DECEMBER);                             
                              oneday[dayCnt].setYear(iYear - 1);
+                             
                          }  else {
+                        	 
                              oneday[dayCnt].setMonth(iMonth - 1);
                              oneday[dayCnt].setYear(iYear);
                          }
+                         
+                         
+                         
+                         oneday[dayCnt].setOnClickListener(new OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {							
+								
+								// TODO Auto-generated method stub
+								if((this_month-1) <= 0){
+                            		prev_month = 12;
+                            		prev_year = today.get(Calendar.YEAR) - 1;
+                            	}else{
+                            		prev_month = this_month -1;
+                            		prev_year = today.get(Calendar.YEAR);
+                            	}                       	
+								
+                             	Toast.makeText(getActivity().getBaseContext(), "Touch3 -> "+ prev_year +"-" + prev_month +"-"+oneday[v.getId()].getTextDay(), Toast.LENGTH_LONG).show();
+                             	
+                             	
+							}
+						});
                      
                     // 다음 달 블럭 표시
                     } else if(actlist.get(dayCnt).equals("n")){
-                        oneday[dayCnt].setTextDaySize(ttpixel);
+                        oneday[dayCnt].setTextDaySize(35);
                         actlist.set(dayCnt, "");
                         oneday[dayCnt].setTextDayTopPadding(-4);
                         if(iMonth + 1 > Calendar.DECEMBER){
                             oneday[dayCnt].setMonth(Calendar.JANUARY);
                             oneday[dayCnt].setYear(iYear + 1);
+                            
                         }  else {
+                        	
                             oneday[dayCnt].setMonth(iMonth + 1);
                             oneday[dayCnt].setYear(iYear);
-                        }
+                        }                       
+                        
+                        oneday[dayCnt].setOnClickListener(new OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								// TODO Auto-generated method stub
+								if( (this_month+1) > Calendar.DECEMBER ){
+                            		next_month = 1;
+                            		next_year = today.get(Calendar.YEAR) + 1;
+                            	}else{
+                            		next_month = this_month + 1;
+                            		next_year = today.get(Calendar.YEAR);
+                            	}                	
+                            	
+                            	Toast.makeText(getActivity().getBaseContext(), "Touch2 -> "+ next_year +"-"+ next_month +"-"+oneday[v.getId()].getTextDay(), Toast.LENGTH_LONG).show();
+   
+							}
+						});
                     // 현재 달 블력 표시
                     }else{
-                    	int tttpixel = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 18, dm);
-                        oneday[dayCnt].setTextDaySize(tttpixel);
+                        oneday[dayCnt].setTextDaySize(55);
                         oneday[dayCnt].setYear(iYear);
                         oneday[dayCnt].setMonth(iMonth);
+                        
                          
+                        
                         //오늘 표시
                         if(oneday[dayCnt].getDay() == today.get(Calendar.DAY_OF_MONTH)
                                 && oneday[dayCnt].getMonth() == today.get(Calendar.MONTH)
                                 && oneday[dayCnt].getYear() == today.get(Calendar.YEAR)){
-                             
-                            oneday[dayCnt].isToday = true;
-                            actlist.set(dayCnt,"오늘");
-                            oneday[dayCnt].invalidate();
-                            mSelect = dayCnt;
-                        }
-                    }
-                     
-                    oneday[dayCnt].setOnLongClickListener(new OnLongClickListener() {
-                        @Override
-                        public boolean onLongClick(View v) {
-                            //Toast.makeText(getActivity().getBaseContext(), iYear+"-"+iMonth+"-"+oneday[v.getId()].getTextDay(), Toast.LENGTH_LONG).show();
-                            return false;
-                        }
-                    });
-
-                    oneday[dayCnt].setOnTouchListener(new OnTouchListener() {
- 
-                        @Override
-                        public boolean onTouch(View v, MotionEvent event) {
-                             
-                            if(oneday[v.getId()].getTextDay() != "" && event.getAction() == MotionEvent.ACTION_UP)
-                            {
-                                if(mSelect != -1){
-                                    oneday[mSelect].setSelected(false);
-                                    oneday[mSelect].invalidate();
-                                }
-                                oneday[v.getId()].setSelected(true);
-                                oneday[v.getId()].invalidate();
-                                mSelect = v.getId();
+                             	
+                             	oneday[dayCnt].isToday = true;
+                                actlist.set(dayCnt,"오늘");
+                                oneday[dayCnt].invalidate();
+                                mSelect = dayCnt;                            
                                  
-                                //Log.d("hahaha", oneday[mSelect].getMonth()+"-"+ oneday[mSelect].getDay());
-                                 
-                                onTouched(oneday[mSelect]);
+                                
+                                int year = today.get(Calendar.YEAR);
+                                int month1 = today.get(Calendar.MONTH) + 1;
+                                int day = today.get(Calendar.DAY_OF_MONTH);
+                                
+                                if(month1 > Calendar.DECEMBER){
+                                	month1 = 12;
+                            	}else{
+                            		month1 = oneday[dayCnt].getMonth() + 1;
+                            	} 
+                                
+                                touchDay = Integer.toString(year) + "-" + 
+                                Integer.toString(month1) + "-" + Integer.toString(day);
+                                
+                                click_date = touchDay;
+                        }
+                        
+                        this_month = oneday[dayCnt].getMonth() + 1;
+                        
+                        
+                        // Touch시 year-month-day 표시하는 부분.
+                        oneday[dayCnt].setOnClickListener(new OnClickListener() {
+							
+							@Override
+							public void onClick(View v) {
+								
+								// TODO Auto-generated method stub
+								if(this_month > Calendar.DECEMBER){
+                            		this_month = 12;
+                            	}else{
+                            		this_month = oneday[dayCnt].getMonth();
+                            	}             	
+                            	
+								if(tmp == null){                            		
+                            		oneday[v.getId()].setBgDayPaint(Color.BLUE);
+                            		tmp = oneday[v.getId()];
+                            		
+                            		
+                            		//v.refreshDrawableState();
+                            		
+                            	}else{
+                            		tmp.setBgDayPaint(Color.WHITE);
+                            		oneday[v.getId()].setBgDayPaint(Color.BLUE);
+                            		tmp = oneday[v.getId()];
+                            		
+                            		
+                            		//v.refreshDrawableState();
+                            	}
+						
+                            	click_date = iYear +"-"+ this_month+"-"+oneday[v.getId()].getTextDay();
+                            	
+                            	CalendarThread calendarthread = new CalendarThread(click_date, "test");
+                            	
+                            	calendarthread.start();
+                            	
+                            	try {
+                            		ScheduleHomeworkFragment homefrag = (ScheduleHomeworkFragment) getFragmentManager().findFragmentById(R.id.fragment_scedule_homework);
+                                	ScheduleEventsFragment eventsfrag = (ScheduleEventsFragment) getFragmentManager().findFragmentById(R.id.fragment_scedule_evnets);
+									calendarthread.join();									
+									homefrag.viewClear();
+									eventsfrag.viewClear();
+									
+									if (calendarthread.getCount() > 0) {
+										JSONArray array = calendarthread.getJarray();										
+										for(int i=0; i < calendarthread.getCount() ; i++){											
+											JSONObject tmp = array.getJSONObject(i);											
+											int type = Integer.parseInt(tmp.getString("schedule_type"));											
+											if(type == 1){
+												homefrag.setOnView(tmp.getString("schedule_title"), 
+														tmp.getString("schedule_des"), tmp.getString("schedule_id"));
+											}else{
+												eventsfrag.setOnView(tmp.getString("schedule_title"), 
+														tmp.getString("schedule_des"), tmp.getString("schedule_id"));
+											}		
+											
+										}
+									}else {
+										
+									}
+									
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								} catch (JSONException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+                            	
+                            	
                             }
-                            return false;
-                        }                        
-                    });
-                }
+						});
+                        
+                        
+                    }          
+                }                
                  
-                 
+                
                 oneday[dayCnt].setTextDay(daylist.get(dayCnt).toString()); //요일,일자 넣기 
                 oneday[dayCnt].setTextActCnt(actlist.get(dayCnt).toString());//활동내용 넣기 
                 oneday[dayCnt].setId(dayCnt); //생성한 객체를 구별할수 있는 id넣기 
                 oneday[dayCnt].invalidate();
+                
                 tr.addView(oneday[dayCnt]);
- 
+                
                 if(daylistsize != dayCnt)
                 {
                     dayCnt++;
@@ -371,6 +444,7 @@ public class CalendarFragment extends Fragment implements OnClickListener {
                     break;
                 }
             }
+            
             tl.addView(tr,new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
  
         }
@@ -411,6 +485,8 @@ public class CalendarFragment extends Fragment implements OnClickListener {
             {
                 iMonth = iMonth + 1;
             }
+            
+            
             makeCalendardata(iYear,iMonth);
             break;
         case R.id.btn_calendar_prevmonth:
@@ -421,6 +497,8 @@ public class CalendarFragment extends Fragment implements OnClickListener {
             }else{
                 iMonth = iMonth - 1;
             }
+            
+            
             makeCalendardata(iYear,iMonth);
             break;
         

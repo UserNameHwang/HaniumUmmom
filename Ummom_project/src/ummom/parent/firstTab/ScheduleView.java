@@ -1,21 +1,20 @@
 package ummom.parent.firstTab;
 
 import ummom.login.R;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class SceduleView extends LinearLayout{
+public class ScheduleView extends LinearLayout{
 	
 	private TextView title;
 	private TextView description;
 	private ImageView edit;
 	private ImageView delete;
 	
-	public SceduleView(Context context, SceduleItem item) {
+	public ScheduleView(Context context, ScheduleItem item) {
 		super(context);
 		// TODO Auto-generated constructor stub
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

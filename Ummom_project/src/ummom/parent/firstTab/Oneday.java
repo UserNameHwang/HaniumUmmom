@@ -62,7 +62,10 @@ public class Oneday extends View {
         textDayPaint.setAntiAlias(true);
         textActcntPaint.setColor(Color.WHITE);
         textActcntPaint.setAntiAlias(true);
-        bgTodayPaint.setColor(Color.GREEN);
+        
+        bgTodayPaint.setColor(Color.WHITE);
+        
+        
         rect = new RectF();
  
         setTextDayTopPadding(0);
@@ -96,13 +99,15 @@ public class Oneday extends View {
         int textDaysize = (int)textDayPaint.measureText(getTextDay()) / 2;
         int textActsize = (int)textActcntPaint.measureText(getTextActCnt()) / 2;
         canvas.drawText(getTextDay(), width - textDaysize + getTextDayLeftPadding(), height + getTextDayTopPadding(), textDayPaint);
-// 할일 표시 삭제
-//        if(getTextActCnt() != "")
-//        {
-//            rect.set(10, 45, 55, 65);
-//            canvas.drawRoundRect(rect, 10, 30, bgActcntPaint);
-//        }
- 
+
+        /*
+        if(getTextActCnt() != "")
+       {
+            rect.set(10, 45, 55, 65);
+            canvas.drawRoundRect(rect, 10, 30, bgActcntPaint);
+       }*/
+        
+        
         canvas.drawText(getTextActCnt(), width - textActsize + getTextActcntLeftPadding(), height + getTextActcntTopPadding(), textActcntPaint);
  
  
@@ -142,6 +147,7 @@ public class Oneday extends View {
     }
     public void setBgDayPaint(int color){
         this.bgDayPaint.setColor(color);
+        this.invalidate();
     }
     public void setBgSelectedDayPaint(int color){
         this.bgSelectedDayPaint.setColor(color);
@@ -160,6 +166,14 @@ public class Oneday extends View {
      * 일자에 표시된 글 리턴
      * @return
      */
+    public String getTextMonth(){
+    	return this.textDay; 
+    }
+    public void setTextMonth(String string){
+    	this.textDay = string;
+    }
+    
+    
     public String getTextDay() {
         return this.textDay;
     }
@@ -206,6 +220,8 @@ public class Oneday extends View {
      */
     public void setTextActcntColor(int color){
         this.textActcntPaint.setColor(color);
+        this.textActcntPaint.setStyle(Paint.Style.FILL);
+        
     }
     /**
      * 부가 설명 글자 크기
