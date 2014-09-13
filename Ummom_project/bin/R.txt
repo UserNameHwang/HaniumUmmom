@@ -186,6 +186,8 @@ int id School_edit 0x7f0600ca
 int id School_searchbutton 0x7f0600cb
 int id TextView1 0x7f06006c
 int id Titleimage 0x7f060005
+int id action_chat 0x7f0600ed
+int id action_person 0x7f0600ee
 int id action_settings 0x7f0600ec
 int id alarm 0x7f060055
 int id birth 0x7f0600e8
@@ -423,6 +425,7 @@ int layout teacher_thirdtab 0x7f03002e
 int layout teacher_thirdtab_studentslist 0x7f03002f
 int layout teacher_thirdtab_studentsrow 0x7f030030
 int menu login 0x7f0c0000
+int menu main 0x7f0c0001
 int string Weather_SKY_A01 0x7f07001d
 int string Weather_SKY_A02 0x7f07001e
 int string Weather_SKY_A03 0x7f07001f

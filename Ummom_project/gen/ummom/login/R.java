@@ -354,6 +354,8 @@ containing a value of this type.
         public static final int School_searchbutton=0x7f0600cb;
         public static final int TextView1=0x7f06006c;
         public static final int Titleimage=0x7f060005;
+        public static final int action_chat=0x7f0600ed;
+        public static final int action_person=0x7f0600ee;
         public static final int action_settings=0x7f0600ec;
         public static final int alarm=0x7f060055;
         public static final int birth=0x7f0600e8;
@@ -597,6 +599,7 @@ containing a value of this type.
     }
     public static final class menu {
         public static final int login=0x7f0c0000;
+        public static final int main=0x7f0c0001;
     }
     public static final class string {
         /**  날씨 문자열 

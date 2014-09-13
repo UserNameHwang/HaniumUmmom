@@ -21,6 +21,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -221,7 +223,20 @@ public class MainParent extends FragmentActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
-		getMenuInflater().inflate(R.menu.login, menu);
+		getMenuInflater().inflate(R.menu.main, menu);
+		getActionBar().setDisplayShowHomeEnabled(false);
+		
+		menu.findItem(R.id.action_person).setOnMenuItemClickListener(new OnMenuItemClickListener() {
+			
+			public boolean onMenuItemClick(MenuItem arg0) {
+				
+				Toast.makeText(getApplicationContext(), 
+						"Menu Click", Toast.LENGTH_SHORT).show();
+				
+				return false;
+			}
+		});
+		
 		return true;
 
 	}
