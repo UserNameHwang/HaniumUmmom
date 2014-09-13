@@ -9,19 +9,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import ummom.login.R;
-import ummom.teacher.mainsliding.SlidingTabsBasicFragment;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
@@ -66,12 +64,15 @@ public class CalendarFragment extends Fragment implements OnClickListener {
     static String touchDay = "";
     static String click_date;
     
+    private DisplayMetrics dm;
     
     View calView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
     		Bundle savedInstanceState) {
     	// TODO Auto-generated method stub
+    	
+    	dm = getResources().getDisplayMetrics();
     	
     	calView = inflater.inflate(R.layout.calendarview, container,false);
 
@@ -195,8 +196,8 @@ public class CalendarFragment extends Fragment implements OnClickListener {
         int maxColumn = 7;
  
  
-        oneday_width = 1020;
-        oneday_height = 1300;
+        oneday_width = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 337, dm);
+        oneday_height = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 450, dm);
         
         oneday_height = ((((oneday_height >= oneday_width)?oneday_height:oneday_width) - tl.getTop()) / (maxRow+1))-10;
         oneday_width = (oneday_width / maxColumn)+1;
@@ -213,11 +214,11 @@ public class CalendarFragment extends Fragment implements OnClickListener {
  
                 //요일별 색상 정하기 
                 if((dayCnt % 7) == 0){
-                    oneday[dayCnt].setTextDayColor(Color.RED);
+                    oneday[dayCnt].setTextDayColor(Color.parseColor("#df4343"));
                 } else if((dayCnt % 7) == 6){
-                    oneday[dayCnt].setTextDayColor(Color.BLUE);
+                    oneday[dayCnt].setTextDayColor(Color.parseColor("#6459ed"));
                 } else {
-                    oneday[dayCnt].setTextDayColor(Color.BLACK);
+                    oneday[dayCnt].setTextDayColor(Color.parseColor("#444444"));
                 }
                  
                 //요일 표시줄 설정
@@ -226,7 +227,10 @@ public class CalendarFragment extends Fragment implements OnClickListener {
                     oneday[dayCnt].setBgDayPaint(Color.parseColor("#6495ed")); //배경색상 
                     oneday[dayCnt].setTextDayTopPadding(15); //일자표시 할때 top padding 
                     oneday[dayCnt].setTextDayColor(Color.WHITE); //일자의 글씨 색상 
-                    oneday[dayCnt].setTextDaySize(40); //일자의 글씨크기 
+                    
+                    int textSize = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, dm);
+                    
+                    oneday[dayCnt].setTextDaySize(textSize); //일자의 글씨크기 
                     oneday[dayCnt].setLayoutParams(new LayoutParams(oneday_width,55)); //일자 컨트롤 크기 
                     oneday[dayCnt].isToday = false;
                      
@@ -247,7 +251,9 @@ public class CalendarFragment extends Fragment implements OnClickListener {
                     
                     //이전 달 블럭 표시
                     if(actlist.get(dayCnt).equals("p")){
-                         oneday[dayCnt].setTextDaySize(35);
+                        int textSize = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, dm);
+
+                         oneday[dayCnt].setTextDaySize(textSize);
                          actlist.set(dayCnt, "");
                          oneday[dayCnt].setTextDayTopPadding(-4);
                          
@@ -285,7 +291,9 @@ public class CalendarFragment extends Fragment implements OnClickListener {
                      
                     // 다음 달 블럭 표시
                     } else if(actlist.get(dayCnt).equals("n")){
-                        oneday[dayCnt].setTextDaySize(35);
+                        int textSize = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, dm);
+
+                        oneday[dayCnt].setTextDaySize(textSize);
                         actlist.set(dayCnt, "");
                         oneday[dayCnt].setTextDayTopPadding(-4);
                         if(iMonth + 1 > Calendar.DECEMBER){
@@ -317,7 +325,9 @@ public class CalendarFragment extends Fragment implements OnClickListener {
 						});
                     // 현재 달 블력 표시
                     }else{
-                        oneday[dayCnt].setTextDaySize(55);
+                        int textSize = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20, dm);
+
+                        oneday[dayCnt].setTextDaySize(textSize);
                         oneday[dayCnt].setYear(iYear);
                         oneday[dayCnt].setMonth(iMonth);
                         
@@ -367,7 +377,7 @@ public class CalendarFragment extends Fragment implements OnClickListener {
                             	}             	
                             	
 								if(tmp == null){                            		
-                            		oneday[v.getId()].setBgDayPaint(Color.BLUE);
+                            		oneday[v.getId()].setBgDayPaint(Color.parseColor("#dddddd"));
                             		tmp = oneday[v.getId()];
                             		
                             		
@@ -375,7 +385,7 @@ public class CalendarFragment extends Fragment implements OnClickListener {
                             		
                             	}else{
                             		tmp.setBgDayPaint(Color.WHITE);
-                            		oneday[v.getId()].setBgDayPaint(Color.BLUE);
+                            		oneday[v.getId()].setBgDayPaint(Color.parseColor("#dddddd"));
                             		tmp = oneday[v.getId()];
                             		
                             		

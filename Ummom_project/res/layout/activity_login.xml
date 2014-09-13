@@ -53,7 +53,8 @@
                 android:layout_height="35dp"
                 android:padding="5dp"
                 android:background="@drawable/view_border"
-                android:hint="Password" >
+                android:hint="Password"
+                android:password="true" >
             </EditText>
         </RelativeLayout>
         

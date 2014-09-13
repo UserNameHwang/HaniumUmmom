@@ -28,7 +28,7 @@ public class MainTeacher extends FragmentActivity{
 	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {    	
-        getMenuInflater().inflate(R.menu.main, menu);       
+        getMenuInflater().inflate(R.menu.login, menu);       
         return true;        
     }
 }

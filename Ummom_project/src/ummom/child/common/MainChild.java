@@ -23,8 +23,7 @@ public class MainChild extends FragmentActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
     	
-    	getActionBar().setDisplayShowHomeEnabled(false);
-        getMenuInflater().inflate(R.menu.main, menu);        
+        getMenuInflater().inflate(R.menu.login, menu);        
         return true;
         
     }
