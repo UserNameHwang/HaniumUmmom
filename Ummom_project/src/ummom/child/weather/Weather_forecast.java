@@ -21,8 +21,8 @@ import com.google.android.gms.maps.model.LatLng;
 
 /**
  * @class weather_forecast
- * @desc ���� ���� �ѷ��ִ� Fragment, sk weather planet api ���
- *       1���ϰ� �߱⿹��
+ * @desc 날씨정보 표시 Fragment, sk weather planet api 사용
+ *       1주일 단위 표시
  * @author Lemoness
  *
  */
@@ -48,12 +48,12 @@ public class Weather_forecast extends Fragment {
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		
-		//Fragment ���� Activity ������ �� ����
+		//Fragment 사용하므로 Activity 정보를 따로 받아와준다.
 		if(mAct == null){
 			Log.d("weather","mAct is null!");
 			mAct = (FragmentActivity) getActivity();
 		}
-		// ó�� View ��� inflate
+		// 뷰 인플레이트, 페이지 넘어갔다 다시오면 생성이 되어있으므로 에러 막기위해 null체크
 		if(mView == null){
 			mView = inflater.inflate(R.layout.fragment_weather, container, false);
 			mWeatherItem = (LinearLayout) mView.findViewById(R.id.fragweather_weatherlist);
@@ -63,10 +63,12 @@ public class Weather_forecast extends Fragment {
 		
 		Log.d("weather","weather parsing : ");
 		
-		// ��ġ���� ���ϱ�
+		// 위치정보 세팅 이후 받아옴.
 		GMapHelper gmap = new GMapHelper(mAct);
 		gmap.SettingGMap();
 		LatLng lat = gmap.getMyLocation();
+		
+		// 날씨정보 받아오는 테스크
 		try {
 			new getWeatherTask().execute(lat);
 		} catch (Exception e){}
@@ -87,7 +89,7 @@ public class Weather_forecast extends Fragment {
 	}
 	
 	/*
-	 * ���� ������ ����� �޼���
+	 * 날씨 아이콘 및 시간 설정
 	 */
 	private void setWeatherItem(Bundle data){
 		if(data != null){ 
@@ -125,7 +127,7 @@ public class Weather_forecast extends Fragment {
 	}
 	
 	/*
-	 * ������ ã�Ƽ� setWeatherIcon�� �ѷ��ִ� �޼���
+	 * 날씨 아이콘 지정하는 메서드. setWeatherIcon에서 사용
 	 */
 	private View weatherIconMaker(String inp, String date, String low, String high){
 		View result = (View) mInflater.inflate(R.layout.fragment_weather_item, mContainer, false);
@@ -191,11 +193,11 @@ public class Weather_forecast extends Fragment {
 	}
 	
 	/*
-	 * �������� �˻� ������ �̳�Ŭ����
+	 * 날씨정보 수신용 쓰레드
 	 */
 	private class getWeatherTask extends AsyncTask<LatLng, Void, Bundle>{
 		
-		// api handler�� �������� �˻�, ���� bundle�� �����ؼ� ����
+		// bundle로 데이터 받아와서 사용.
 		@Override
 		protected Bundle doInBackground(LatLng... params) {
 			// TODO Auto-generated method stub
@@ -205,7 +207,7 @@ public class Weather_forecast extends Fragment {
 			return bundle;
 		}
 		
-		// �˻����� ������ �ѷ���
+		// 스레드 종료후 아이템 설정.
 		@Override
 		protected void onPostExecute(Bundle result) {
 			// TODO Auto-generated method stub

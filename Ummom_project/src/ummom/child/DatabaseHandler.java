@@ -2,8 +2,8 @@ package ummom.child;
 
 /**
  * @class databasehandler
- * @desc ³»ºÎ µ¥ÀÌÅÍº£ÀÌ½º Á¢±Ù½Ã »ç¿ëÇÒ Å¬·¡½º
- *       ÇöÀç Æù ³»ºÎ DB »ç¿ëÀÌ ¾ø¾î ÀÛ¼ºÇÏÁö ¾ÊÀ½
+ * @desc ì—„ë§˜ ì„œë²„ ë°ì´í„°ë² ì´ìŠ¤ / í° ë‚´ìž¥ ë°ì´í„°ë² ì´ìŠ¤ ì»¨íŠ¸ë¡¤ìš© í´ëž˜ìŠ¤
+ * 		 ë©”ì†Œë“œ ì—†ìŒ.  ë””ë¹„ ì•ˆì“°ë©´ ì‚­ì œí• ê²ƒ
  * @author Lemoness
  *
  */

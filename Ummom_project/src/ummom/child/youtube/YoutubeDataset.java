@@ -2,6 +2,11 @@ package ummom.child.youtube;
 
 import java.util.ArrayList;
 
+/**
+ * @class YoutubeDataset
+ * @author Lemoness
+ * @desc 유튜브 검색 데이터 저장용 클래스
+ */
 public class YoutubeDataset {
 	private ArrayList<YoutubeSearchData> mData;
 	private String mQuery;

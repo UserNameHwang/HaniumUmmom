@@ -13,8 +13,8 @@ import ummom.login.R;
 
 /**
  * @class childpager
- * @desc ÆäÀÌÁöº° Á¤º¸ »Ñ·ÁÁÖ´Â Å¬·¡½º.  slidingtabbasic¿¡ ÆäÀÌÁö ¶ç¾îÁÖ´Â°÷¿¡ °¬´Ù ¾²¸é µÈ´Ù. º¹ÀâÇØ¼­ »©ÁÜ.
- *       ÇöÀç removepage ¸Ş¼­µå ¿¡·¯ ÀÖÀ½.
+ * @desc í˜ì´ì§€ í‘œì‹œìš© í´ë˜ìŠ¤  slidingtabbasicì— í˜ì´ì§€ë¥¼ ë¿Œë ¤ì£¼ëŠ”ë° ì“°ì„.
+ *       í˜„ì¬ removepage ì—ëŸ¬ ìˆìŒ.
  * @author Lemoness
  *
  */
@@ -33,7 +33,7 @@ public class childpager {
 		mFA_Frag = frg;
 	}
 
-	//ÆäÀÌÁö 1 Ç¥½Ã - ½ºÄÉÁì, fragment»ç¿ë
+	//ì•„ì´ í˜ì´ì§€ 1 í• ì¼, fragmentì‚¬ìš©í•¨
 	public Object page1(ViewGroup container){
 		if(mView_page1 == null) mView_page1 = mFA_Frag.getLayoutInflater().inflate(R.layout.layout_tab1, container, false);           
 
@@ -42,16 +42,16 @@ public class childpager {
 		TextView TV_nextTitle = (TextView) mView_page1.findViewById(R.id.tab1_nexttitle);
 		TextView TV_nextContent = (TextView) mView_page1.findViewById(R.id.tab1_nextcontent);
 		
-		TV_nowTitle.setText("Áö±İÇÒÀÏ");
-		TV_nowContent.setText("ÄÚµùÇØ ÀÓ¸¶");
-		TV_nextTitle.setText("´ÙÀ½¿¡ ÇÒÀÏ");
-		TV_nextContent.setText("¶Ç ÄÚµùÇØ ÀÓ¸¶");
+		TV_nowTitle.setText("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+		TV_nowContent.setText("ï¿½Úµï¿½ï¿½ï¿½ ï¿½Ó¸ï¿½");
+		TV_nextTitle.setText("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+		TV_nextContent.setText("ï¿½ï¿½ ï¿½Úµï¿½ï¿½ï¿½ ï¿½Ó¸ï¿½");
 
 		container.addView(mView_page1);
 		return mView_page1;
 	}
 
-	//ÆäÀÌÁö 2 Ç¥½Ã - À¯ºZ
+	//ì•„ì´ í˜ì´ì§€ 2 ìœ íŠœë¸Œ
 	public Object page2(ViewGroup container){
 		if(mView_page2 == null) mView_page2 = mFA_Frag.getLayoutInflater().inflate(R.layout.layout_tab2, container, false);            
 		container.addView(mView_page2);           
@@ -63,7 +63,7 @@ public class childpager {
 		return mView_page2;
 	}
 
-	//ÆäÀÌÁö 3 Ç¥½Ã - ÁÖ¼Ò·Ï
+	//ì•„ì´ í˜ì´ì§€ 3  - ì£¼ì†Œë¡ / í˜„ì¬ ë‚ ì”¨ì •ë³´ í…ŒìŠ¤íŠ¸ìš©
 	public Object page3(ViewGroup container){
 		if(mView_page3 == null) mView_page3 = mFA_Frag.getLayoutInflater().inflate(R.layout.layout_tab3,container, false);            
 		container.addView(mView_page3);
@@ -72,7 +72,7 @@ public class childpager {
 		return mView_page3;
 	}
 
-	//ÆäÀÌÁö 4 Ç¥½Ã - ¾Ù¹ü, xml¿¡¼­ fragment»ç¿ë
+	//ì•„ì´ í˜ì´ì§€ 4 - ì•¨ë²” / fragment ì‚¬ìš©ì¤‘
 	public Object page4(ViewGroup container){
 		if(mView_page4 == null) mView_page4 = mFA_Frag.getLayoutInflater().inflate(R.layout.layout_tab4,container, false);            
 		container.addView(mView_page4);           
@@ -85,14 +85,14 @@ public class childpager {
 		return mView_page4;
 	}
 
-	//ÆäÀÌÁö 5 Ç¥½Ã - ¿ëµ·±âÀÔÀåÀÎµ¥ ¾ÈµÉ°Å¾ß ¾Æ¸¶.
+	//ì•„ì´ í˜ì´ì§€ 5 - ìš©ëˆê¸°ì…ì¥ // ì•ˆí•¨
 	public Object page5(ViewGroup container){
 		if(mView_page5 == null) mView_page5 = mFA_Frag.getLayoutInflater().inflate(R.layout.layout_tab5,container, false);            
 		container.addView(mView_page5);
 		return mView_page5;
 	}
 
-	// ÆäÀÌÁö »èÁ¦½Ã È£Ãâ ¸Ş¼­µå. ¿¡·¯ÀÖÀ½
+	// í˜ì´ì§€ ì œê±°ìš© ë©”ì„œë“œ. ì—ëŸ¬ìˆìŒ
 	public void removepage(int i){
 		switch(i){
 		case 1 :

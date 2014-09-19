@@ -25,8 +25,8 @@ import android.support.v4.app.FragmentActivity;
 
 /**
  * @class gmaphelper
- * @desc ±¸±Û¸Ê °ü·Ã ¸Ş¼­µå ÀúÀå Å¬·¡½º
- *       »ı¼ºÀÚ »ç¿ë½Ã ¾×Æ¼ºñÆ¼ Àü´Ş, ¸Ê »ı¼º½Ã ±¸±Û¸Ê fragment id Àü´Ş
+ * @desc êµ¬ê¸€ ë§µ ì»¨íŠ¸ë¡¤ìš© í´ë˜ìŠ¤
+ * 		 í˜„ì¬ ìœ„ì¹˜ì •ë³´ ê°€ì ¸ì˜¤ê¸°ìš©ìœ¼ë¡œ ì‚¬ìš©.
  * @author Lemoness
  *
  */
@@ -50,7 +50,7 @@ public class GMapHelper implements LocationListener{
 		mLatLng = new LatLng(0,0);
 	}
 
-	//¸Ê »ç¿ë½Ã¿¡´Â ±¸±Û¸Ê fragmentÀÇ ¾ÆÀÌµğ¸¦ Àü´ŞÇØÁÖÀÚ.
+	//ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Û¸ï¿½ fragmentï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 	public void CreateGMap(int mapID){
 		mID_fragmap = mapID;
 		
@@ -69,13 +69,13 @@ public class GMapHelper implements LocationListener{
 		}
 	}
 
-	// ±âº» À§Ä¡Á¤º¸ ¼³Á¤ ¸Ş¼­µå
+	// í´ë˜ìŠ¤ ì„¸íŒ…ìš© ë©”ì†Œë“œ
 	public void SettingGMap(){
 		GooglePlayServicesUtil.isGooglePlayServicesAvailable(mFA_act);
 		mLocationManager = (LocationManager) mFA_act.getSystemService(Context.LOCATION_SERVICE);
 		mProvider = mLocationManager.getBestProvider(new Criteria(), true);
 
-		//À§Ä¡Á¤º¸ »ç¿ë ºÒ°¡½Ã ¼³Á¤Ã¢ ÀÌµ¿
+		// gps êº¼ì ¸ìˆì„ë•Œ
 		if(mProvider == null){
 			setProvider();
 		}
@@ -85,7 +85,7 @@ public class GMapHelper implements LocationListener{
 		}
 	}
 	
-	// À§Ä¡Á¤º¸ ¼öÁı ¸Ş¼­µå, ¿¡·¯³­´Ù.....À¸¾Æ
+	// ìœ„ì¹˜ì°¾ê¸°ìš© ë©”ì„œë“œ
 	public LatLng getMyLocation(){
 		mLocationManager.requestLocationUpdates(mProvider, 1, 1, this);
 		Location location = mLocationManager.getLastKnownLocation(mProvider);
@@ -126,9 +126,9 @@ public class GMapHelper implements LocationListener{
 
 	private void setProvider(){
 		new AlertDialog.Builder(mFA_act)
-		.setTitle("À§Ä¡¼­ºñ½º µ¿ÀÇ")
-		.setMessage("ÈŞ´ëÀüÈ­ÀÇ À§Ä¡Á¤º¸¸¦ ¼öÁıÇÏ¿© »ç¿ëÇÒ ¼ö ÀÖµµ·Ï ÇÕ´Ï´Ù. 3G/4G »ç¿ë½Ã µ¥ÀÌÅÍ ¿ä±İÀÌ ¹ß»ıÇÕ´Ï´Ù.")
-		.setNeutralButton("ÀÌµ¿" ,new DialogInterface.OnClickListener() {
+		.setTitle("ìœ„ì¹˜ì •ë³´ ì‚¬ìš© ë™ì˜")
+		.setMessage("ìœ„ì¹˜ì •ë³´ ì‚¬ìš©ì— ë™ì˜í•˜ì‹œê² ìŠµë‹ˆê¹Œ?. 3G/4G ì‚¬ìš©ì‹œ ë°ì´í„° ìš”ê¸ˆì´ ë°œìƒí•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.")
+		.setNeutralButton("ë™ì˜" ,new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				mFA_act.startActivityForResult(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS), 0);

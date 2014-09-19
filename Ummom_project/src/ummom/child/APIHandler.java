@@ -35,8 +35,9 @@ import android.util.Log;
 
 /**
  * @class apihandler
- * @desc ���� API �����ϴ� �޼��带 ��Ƴ��.
- *       sendgetrequest, sendpostrequest�� �ð��� �Ǹ� ������� ���༭ �� Ŭ������ ������ �̳�Ŭ���� ����°� ������.
+ * @desc 엄맘 서버 API 접근용 클래스
+ *       sendgetrequest, sendpostrequest 이용하여 나머지 메소드들이 API 접근
+ *       이걸 따로 테스크로 만들면 편하지않을까?
  * @author Lemoness
  *
  */
@@ -59,13 +60,12 @@ public class APIHandler {
 	
 	/*
 	 * @ref http://ondestroy.tistory.com/49
-	 * @ref Httpget����1
+	 * @ref Httpget문서1
 	 */
 	public JSONObject getYoutube(String S_query){
 		String S_sendquery= 
-				/*q : ���� ����
-				 * maxResults : ������ ������ ���� �ִ� 50��
-				 * pageToken : �������� ��ū ���� �˻�. ���������� ǥ���Ҷ� ����ҵ�
+				/*q : 질의문
+				 * maxResults : 최대 응답 갯수, 50이 최대
 				 */
 				"https://www.googleapis.com/youtube/v3/search?part=snippet&q="+ S_query +
 							"&maxResults=20" + 
@@ -74,9 +74,9 @@ public class APIHandler {
 	}
 	public JSONObject getYoutube(String S_query, String S_token){
 		String S_sendquery= 
-				/*q : ���� ����
-				 * maxResults : ������ ������ ���� �ִ� 50��
-				 * pageToken : �������� ��ū ���� �˻�. ���������� ǥ���Ҷ� ����ҵ�
+				/*q : 질의문
+				 * maxResults : 최대 응답 갯수, 50이 최대
+				 * pageToken : 페이지 넘어갈때 필요한 토큰
 				 */
 				"https://www.googleapis.com/youtube/v3/search?part=snippet&q="+ S_query +
 							"&maxResults=20" + 
@@ -91,13 +91,13 @@ public class APIHandler {
 		Log.d("youtube","query result : " + JO_input.toString());
 		YoutubeDataset result = new YoutubeDataset();
 		try {
-			// �˻� ���� ����
+			// 응답 데이터의 정보
 			result.setNextToken(JO_input.getString("nextPageToken"));
 			JSONObject JO_pageinfo = JO_input.getJSONObject("pageInfo");
 			result.setTotalResult(JO_pageinfo.getInt("totalResults"));
 			result.setResultperPage(JO_pageinfo.getInt("resultsPerPage"));
 			
-			// �˻��� ������ ����
+			// 동영상 리스트 파싱
 			JSONArray JA_data = JO_input.getJSONArray("items");
 			int max = Integer.parseInt(JO_input.getJSONObject("pageInfo").getString("resultsPerPage"));
 			for(int i=0 ; i<max ; i++){
@@ -119,36 +119,48 @@ public class APIHandler {
 	/**
 	 * @def gallery api
 	 * @param S_query
+	 * @desc 엄맘 서버의 갤러리 가져오기
 	 * @return 
 	 */	
 	public JSONObject getGallery(){
+		//현재 사용안함. 이전버전 호환용
 		String S_sendquery = "http://14.63.212.236/index.php/api_c/getAlbum";
 		return sendGETRequest(S_sendquery);
 	}
 	public JSONObject getGallery(String S_query){
+		/*
+		 * thumbnail = 불러올 앨범 섬네일
+		 */
 		String S_sendquery = "http://14.63.212.236/index.php/album/getAlbumDetail/" +
 							 "?thumbnail=" + S_query;
+		Log.d("gallery","sendGET : " + S_sendquery);
 		return sendGETRequest(S_sendquery);
 	}
 	public ArrayList<String> parsingGallery(JSONObject JO_input){
+		// getGallery통해 가져온 데이터 파싱
 		ArrayList<String> ALS_result = new ArrayList<String>();
 		Log.d("gallery","getJSON : " + JO_input.toString());
 		try {
-			JSONObject innerdata = JO_input.getJSONObject("album");
-			int max = Integer.parseInt(innerdata.getString("img_count"));
+			int max = JO_input.getInt("count");
+			JSONArray innerarray = JO_input.getJSONArray("albumDetail");
 			Log.d("gallery","getcount : " + max);
 			for(int i=0 ; i<max ; i++){
-				ALS_result.add("http://14.63.212.236/" +innerdata.getString("img"+(i+1)));
+				Log.d("gallery","loop!");
+				ALS_result.add("http://14.63.212.236/" + innerarray.getJSONObject(i).getString("url"));
 			}
 		} catch (JSONException e) {}
 		return ALS_result;
 	}
 	public JSONObject getAlbum(String S_query){
+		/*
+		 * id - 교사 아이디
+		 */
 		String S_sendquery = "http://14.63.212.236/index.php/album/getAlbum/" +
 							 "?id=" + S_query;
 		return sendGETRequest(S_sendquery);
 	}
 	public Bundle parsingAlbum(JSONObject JO_input){
+		//getAlbum 통해 가져온 데이터 파싱
 		Bundle result = new Bundle();
 		try {
 			JSONArray JA_innerdata = JO_input.getJSONArray("album_list");
@@ -174,7 +186,7 @@ public class APIHandler {
 	/**
 	 * @def album post api
 	 * @param S_query
-	 * @return boolean �������, 400�� ����
+	 * @return boolean 성공/실패값, 400이 성공
 	 */
 	
 	private boolean parsingPostAlbumResult(JSONObject JO_input){
@@ -185,6 +197,7 @@ public class APIHandler {
 	}
 	
 	public boolean postAlbum(String S_id, String S_Albumname, File F_image){
+		//앨범 업로드용
 		String S_postquery = "http://14.63.212.236/index.php/album/upload_album";
 		MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
 		try {
@@ -201,7 +214,7 @@ public class APIHandler {
 	
 	
 	/**
-	 * @def Weather api
+	 * @def Weather api - SK WeatherPlanet 데이터 사용
 	 * @param S_query
 	 * @return Bundle
 	 */
@@ -214,7 +227,7 @@ public class APIHandler {
 		return sendGETRequest(S_sendquery);
 	}
 	public Bundle parsingWeatherInfo(JSONObject JO_input){
-
+		//getWeather-Forecast 통해 가져온 데이터 파싱
 		Bundle result = new Bundle();
 		try{
 			JSONObject JO_innerdata = JO_input.getJSONObject("result");
@@ -286,9 +299,10 @@ public class APIHandler {
 			response = HC_client.execute(HG_httpget);
 			HttpEntity HE_entity = response.getEntity();
 			JO_result = new JSONObject(EntityUtils.toString(HE_entity));
-		} catch (ClientProtocolException e) {} 
-		catch (IOException e) {}
-		catch (JSONException e) {}
+		} 
+		catch (Exception e){
+			e.printStackTrace();
+		}
 		return JO_result;
 	}
 	
@@ -302,11 +316,10 @@ public class APIHandler {
 			response = HC_client.execute(HP_httppost);
 			HttpEntity respentity = response.getEntity();
 			JO_result = new JSONObject(EntityUtils.toString(respentity));
+		} 
+		catch (Exception e){
+			e.printStackTrace();
 		}
-		catch (ClientProtocolException e) {}
-		catch (ParseException e) {} 
-		catch (JSONException e) {}
-		catch (IOException e) {}
 		return JO_result;
 	}
 }

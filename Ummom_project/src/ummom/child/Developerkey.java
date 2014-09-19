@@ -2,7 +2,7 @@ package ummom.child;
 
 /**
  * @class Developerkey
- * @desc ¿ÜºÎ API »ç¿ë½ÃÀÇ °³¹ßÀÚ Å° ÀúÀå Å¬·¡½º
+ * @desc ì™¸ë¶€ API ê°œë°œì í‚¤ ì €ì¥ìš© í´ë˜ìŠ¤
  * @author Lemoness
  *
  */
@@ -27,7 +27,7 @@ public class Developerkey {
 	
 	/*
 	 * @Activated by lemoness
-	 * @site : http://
+	 * @site : https://developers.skplanetx.com/
 	 */
 	public static final String S_SKplanetkey = "5187a800-f9a3-3997-9406-63bf333ad542";
 }

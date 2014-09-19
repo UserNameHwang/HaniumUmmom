@@ -33,8 +33,8 @@ import com.google.android.youtube.player.YouTubePlayerFragment;
 
 /**
  * @class youtubeplayer
- * @desc youtube Àç»ı class, fragment·Î ÇÏ´Â°Ô ¾Æ´Ï´Ù!
- * 		 »ı¼ºÀÚ È£ÃâÇÒ¶§ ·¹ÀÌ¾Æ¿ô°ú ÀÎÀÚ¸¦ ³Ö¾îÁÖ¸é ±×°É·Î »ı¼ºÇØÁÜ
+ * @desc youtubeí”Œë ˆì´ì–´ class, ìƒˆ Activity ì‹¤í–‰
+ * 		 ì´ í´ë˜ìŠ¤ëŠ” í”Œë ˆì´ì–´ë§Œ ë„ì›Œì¤€ë‹¤.  ë¦¬ìŠ¤íŠ¸ í‘œì‹œëŠ” ë°‘ì—ì„œ onConstruct ê°€ ë‹´ë‹¹
  * @author Lemoness
  *
  */
@@ -45,7 +45,6 @@ public class YoutubePlayer extends YouTubeFailureRecoveryActivity{
 	private Button mBtn_search;
 	private ListView mLV_listview;
 	private ListAdapter mAdapter;
-	//!!! dataÀÇ ÀúÀå°ú ÀÔÃâ·ÂÀº dataset¿¡ ÀÌ·ç¾îÁ®¾ß ÇÑ´Ù!
 	private YoutubeDataset mDataset;
 	
 	public YoutubePlayer(FragmentActivity FA_activity, 
@@ -69,7 +68,7 @@ public class YoutubePlayer extends YouTubeFailureRecoveryActivity{
 	
 	public void onConstruct(){
 
-    	//¸®½ºÆ®ºä Å¬¸¯¸®½º³Ê
+    	//ë¦¬ìŠ¤íŠ¸ ë„ì›Œì¤„ ì¤€ë¹„, í´ë¦­ì‹œ Activity ì‹¤í–‰
 		mLV_listview.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
@@ -78,11 +77,12 @@ public class YoutubePlayer extends YouTubeFailureRecoveryActivity{
 				ListAdapter adapter = (ListAdapter)arg0.getAdapter();
 				Intent intent = new Intent(mFA_Act, YoutubePlayer.class);
 				intent.putExtra("videoid", adapter.getVideoid(arg2));
-				arg1.getContext().startActivity(intent);
+				mFA_Act.startActivity(intent);
+				mFA_Act.overridePendingTransition(R.anim.page_appear, R.anim.page_donmove);
 			}
 		});
 		
-		// ½ºÅ©·Ñ ¹Ù´Ú¿¡ ´ê¾ÒÀ» ¶§ Ã¼Å© ÈÄ ¸®½ºÆ® Ãß°¡
+		// ìŠ¤í¬ë¡¤ì´ ë°”ë‹¥ì„ ì¹˜ë©´ ë¦¬ìŠ¤íŠ¸ ê°±ì‹ 
 		mLV_listview.setOnScrollListener(new ListView.OnScrollListener() {
 			
 			boolean flag = false;
@@ -105,9 +105,8 @@ public class YoutubePlayer extends YouTubeFailureRecoveryActivity{
 			}
 		});
                 
-        //°Ë»ö¹öÆ° Å¬¸¯½Ã °Ë»öÇØÁÖ´Â ¹öÆ°
+        // ê²€ìƒ‰ë²„íŠ¼ í´ë¦­ì‹œ ê²€ìƒ‰
         mBtn_search.setOnClickListener(new View.OnClickListener() {
-			//¸®½ºÆ® °Ë»ö ½Ã ÇØ´ç ¸®½ºÆ® ¶ç¿öÁÖ´Â ¸®½º³Ê
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -121,7 +120,7 @@ public class YoutubePlayer extends YouTubeFailureRecoveryActivity{
         new searchTask().execute("", null);
 	}
 	
-	// ºñµğ¿À Àç»ı ¸Ş¼Òµå
+	// í”Œë ˆì´ì–´ ìƒì„±
 	public void onCreate(Bundle arg0){
 		super.onCreate(arg0);
 		setContentView(R.layout.fragment_youtube);
@@ -139,8 +138,18 @@ public class YoutubePlayer extends YouTubeFailureRecoveryActivity{
 		}
 		
 	}
+	
 
-	// ÇÃ·¹ÀÌ¾î Á¤º¸ µ¹·ÁÁÖ´Â ¸Ş¼Òµå?
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		overridePendingTransition(R.anim.page_donmove, R.anim.page_disappear);
+		finish();
+	}
+
+
+	// ìœ íŠœë¸Œ í”Œë ˆì´ì–´ xml í˜¸ì¶œ
 	@Override
 	protected Provider getYouTubePlayerProvider() {
 		// TODO Auto-generated method stub
@@ -181,7 +190,7 @@ public class YoutubePlayer extends YouTubeFailureRecoveryActivity{
 
 /**
  * @class listadapter
- * @desc À¯ºZ °Ë»ö ¸®½ºÆ® »Ñ·ÁÁÖ´Â ¾îµªÅÍ
+ * @desc  ìœ íŠœë¸Œ ë¦¬ìŠ¤íŠ¸ì— ì‚¬ìš©ë  ì–´ëí„°
  * @author Lemoness
  *
  */
@@ -249,8 +258,7 @@ class ListAdapter extends BaseAdapter{
 
 /**
  * @class youtubelistview
- * @desc À¯ºZ ¸®½ºÆ® ¾ÆÀÌÅÛ Å¬·¡½º, ¿ÖÀÌ·¨´ÂÁø ¸ğ¸£°Ù´Âµ¥ xml ¾È¾²°í java·Î ¸¸µé¾ú´Ù...
- *       ³ªÁß¿¡ ¹Ù²Ù±â
+ * @desc  ë¦¬ìŠ¤íŠ¸ ë„ì›Œì£¼ëŠ” í´ë˜ìŠ¤.  XML ì‚¬ìš© ì•ˆí•˜ê³  í•¨
  * @author Lemoness
  *
  */

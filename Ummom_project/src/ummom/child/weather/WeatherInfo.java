@@ -2,17 +2,17 @@ package ummom.child.weather;
 
 /**
  * @class WeatherInfo
- * @desc ³¯¾¾Á¤º¸ ÀúÀå class
+ * @desc  ë‚ ì”¨ì •ë³´ ì €ì¥ìš© class
  * @author Lemoness
  *
  */
 public class WeatherInfo{
 	
-	private String Weather_string;		//³¯¾¾ µ¥ÀÌÅÍ
-	private String Weather_icon;		//³¯¾¾ ¾ÆÀÌÄÜ
-	private String Weather_time;		//ÀÏÀÚ
-	private int temp_max;				//ÃÖ°í¿Âµµ
-	private int temp_min;				//ÃÖÀú¿Âµµ
+	private String Weather_string;		//ë‚ ì”¨ì •ë³´ - ë¬¸ìì—´
+	private String Weather_icon;		//ë‚ ì”¨ì •ë³´ - ì•„ì´ì½˜ ì´ë¦„
+	private String Weather_time;		//ë‚ ì”¨ì •ë³´ - ì‹œê°„
+	private int temp_max;				//ë‚ ì”¨ì •ë³´ - ìµœê³ ì˜¨ë„
+	private int temp_min;				//ë‚ ì”¨ì •ë³´ - ìµœì €ì˜¨ë„
 	
 	public WeatherInfo(){
 	}

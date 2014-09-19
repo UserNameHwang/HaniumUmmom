@@ -12,8 +12,13 @@ import ummom.child.APIHandler;
 
 import ummom.login.R;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Bitmap.Config;
@@ -21,6 +26,7 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore.Images.Media;
 import android.support.v4.app.FragmentActivity;
 import android.text.format.Time;
 import android.view.LayoutInflater;
@@ -37,11 +43,12 @@ import android.widget.Toast;
 
 /**
  * @class albummaker
- * @desc �ٹ� ��� Fragment, Fragment�� �ۼ��Ǿ xml���� ȣ��������
+ * @desc 앨범Fragment 관련 클래스
  * @author Lemoness
  *
  */
 public class AlbumMaker extends Fragment{
+
 
 	private FragmentActivity mFA_act;
 	private View mView;
@@ -55,40 +62,60 @@ public class AlbumMaker extends Fragment{
 		mFA_act = act;
 	}
 	
-	/*
-	 * Fragment�� ���� �ѷ��ֱ�
-	 */
+	//Fragment에 View를 띄워주는 부분
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// TODO Auto-generated method stub
 		
-		// Fragment�̹Ƿ� ��Ƽ��Ƽ �޾��ش�.
+		//Fragment로 시작될 경우 FragmentActivity 받아주는 부분.
 		if(mFA_act == null){
 			mFA_act = (FragmentActivity) getActivity();
 		}
-		// ó�� View�� ��� ��� View�� inflate������
+		// View가 처음 사용될 때 inflage
 		if(mView == null){
 			mView = inflater.inflate(R.layout.fragment_album, container, false);
 			mListview = (ListView) mView.findViewById(R.id.fragment_album_list);
+			mListview.setPadding(10, 10, 10, 0);
+			
 			Button btn_add = new Button(mFA_act);
-			btn_add.setText("새 앨범 만들기");
+			btn_add.setBackgroundResource(R.drawable.view_border);
+			btn_add.setText("새 앨범 추가하기");
+			
+			Button btn_up = new Button(mFA_act);
+			btn_up.setBackgroundResource(R.drawable.view_border);
+			btn_up.setText("맨 위로");
 			
 			mAdapter = new AlbumAdapter(mFA_act, new ArrayList<AlbumDataset>());
-			mListview.addFooterView(btn_add);
+			mListview.addHeaderView(btn_add);
+			mListview.addFooterView(btn_up);
 			
-			//��ư ������ ���
+			//추가 버튼 클릭시
 			btn_add.setOnClickListener(new View.OnClickListener() {
 				
 				@Override
 				public void onClick(View arg0) {
 					// TODO Auto-generated method stub
-					Toast.makeText(mFA_act, "button clicked!", Toast.LENGTH_SHORT).show();
+					Intent intent = new Intent(Intent.ACTION_PICK);
+					intent.setType(Media.CONTENT_TYPE);
+					intent.setData(Media.INTERNAL_CONTENT_URI);
+					startActivityForResult(intent, 0);
+					
 				}
 			});
 			
-			//����Ʈ ������ ���
+			//위로 버튼 클릭시
+			btn_up.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					mListview.setScrollX(0);
+				}
+			});
+			
+			//리스트 아이템 클릭시
 			mListview.setOnItemClickListener(new OnItemClickListener() {
 
 				@Override
@@ -96,21 +123,48 @@ public class AlbumMaker extends Fragment{
 						int arg2, long arg3) {
 					// TODO Auto-generated method stub
 					Toast.makeText(mFA_act, "list clicked!", Toast.LENGTH_SHORT).show();
-					
+					Intent intent = new Intent(mFA_act, GalleryMaker.class);
+					intent.putExtra("dir", ((AlbumDataset)mAdapter.getItem(arg2)).getThumnail());
+					mFA_act.startActivity(intent);
+					mFA_act.overridePendingTransition(R.anim.page_appear, R.anim.page_donmove);
 				}
 			});
 		}
 		
-		//��� ����
+		//어뎁터 설정
 		mListview.setAdapter(mAdapter);
-		new getlistTask().execute("cest");
-//		return super.onCreateView(inflater, container, savedInstanceState);
+		new getlistTask().execute("cest");		// 유저의 아이디가 다시 들어가야한다. 현재 테스트용 cest
 		return mView;
 	}
 	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == 0){
+			if(resultCode == Activity.RESULT_OK){
+				Toast.makeText(mFA_act, data.getData().toString(), Toast.LENGTH_SHORT).show();
+			}
+		}
+	}
+	
+	@Override
+	public void onDestroyView() {
+		// TODO Auto-generated method stub
+		super.onDestroyView();
+		if(mListview != null){
+			mListview.removeAllViews();
+		}
+		if(mView != null){
+			ViewGroup parent = (ViewGroup) mView.getParent();
+			if(parent != null){
+				parent.removeView(mView);
+			}
+		}
+	}
 	
 	/*
-	 * APIhandler �̿��ؼ� ����Ʈ �޾��ִ� ������
+	 * APIhandler 데이터 받아오기용 스레드
 	 */
 	class getlistTask extends AsyncTask<String, Void, Void>{
 
@@ -129,7 +183,7 @@ public class AlbumMaker extends Fragment{
 			mAdapter.setData(dataset);
 			return null;
 		}
-		// ������ �޾��ָ� ��� �ֽ�ȭ ��û
+		// 스레드 종료이후 어뎁터 최신화
 		@Override
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
@@ -142,7 +196,7 @@ public class AlbumMaker extends Fragment{
 
 /**
  * @class albumadapter 
- * @desc �ٹ� ����Ʈ �ѷ��ִ� ��� Ŭ����
+ * @desc 앨범 표시해줄 어뎁터
  * @author Lemoness
  *
  */
@@ -158,7 +212,7 @@ class AlbumAdapter extends BaseAdapter{
 	public AlbumAdapter(Context context, ArrayList<AlbumDataset> data){
 		mContext = context;
 		mData = data;
-		/* Bitmap �ɼ� ���� */
+		/* Bitmap 옵션 설정 */
 		mO_Opt = new Options();
 		mO_Opt.inPreferredConfig = Config.RGB_565;
 		mO_Opt.inJustDecodeBounds = true;
@@ -192,7 +246,7 @@ class AlbumAdapter extends BaseAdapter{
 		return arg0;
 	}
 
-	//�̹��� �ѷ��ִ� �޼���, ���̾ƿ��� ����� ����Ϸ� ������ �ְ�, �̸� ��¥ �ѷ��ش�.
+	//화면에 뿌려주는 메서드, 으으...
 	@Override
 	@SuppressWarnings("deprecation")
 	public View getView(int arg0, View arg1, ViewGroup arg2) {
@@ -218,7 +272,7 @@ class AlbumAdapter extends BaseAdapter{
 		return arg1;
 	}
 
-	// ��Ʈ�� ũ�� �缳�����ִ°�, ����������Ŀ�� Resizer�� ����
+	// 앨범 섬네일 이미지 줄여주기용 Resizer클래스, ummom.child.ImageHandler 사용해서 바꾸기
 	private Bitmap Resizer(String dir, int width, int height){
 		/* �ɼ� ���� */
 		//return Bitmap.createScaledBitmap(BitmapFactory.decodeFile(dir, mOpt), width, height, true);
@@ -244,7 +298,7 @@ class AlbumAdapter extends BaseAdapter{
 	}
 	
 	/*
-	 * APIhandler �̿��ؼ� �ٹ� ���� �޾ƿ��� ������ Ŭ����
+	 * APIhandler 에서 이미지 가져우는 쓰레드
 	 */
 	class getImageTask extends AsyncTask<String, Void, Bitmap>{
 
@@ -259,7 +313,7 @@ class AlbumAdapter extends BaseAdapter{
 
 /**
  * @class albumdataset
- * @desc �ٹ� ���� �޾��ִ� Ŭ����
+ * @desc 앨범 데이터 저장용 클래스
  * @author Lemoness
  *
  */

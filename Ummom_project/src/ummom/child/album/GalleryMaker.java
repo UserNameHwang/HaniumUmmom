@@ -1,31 +1,24 @@
 package ummom.child.album;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import ummom.child.APIHandler;
+import ummom.child.ImageHandler;
 
 
+import ummom.login.R;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory.Options;
 import android.os.AsyncTask;
-import android.os.Environment;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
+import android.view.animation.Animation;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Gallery;
@@ -34,59 +27,48 @@ import android.widget.TextView;
 
 /**
  * @clas gallerymaker
- * @desc °¶·¯¸® ¸¸µé¾îÁÖ´Â Å¬·¡½º, »ı¼ºÀÚ È£Ãâ½Ã¿¡ »ı¼ºÀÚÀÇ Á¤º¸·Î È­¸é¿¡ »Ñ·ÁÁØ´Ù.
- *       °¡´ÉÇÏ¸é Fragment·Î ÀçÀÛ¼ºÇØº¸ÀÚ.
+ * @desc  ì•¨ë²”ì—ì„œ ë°›ì•„ì˜¨ ì„¬ë„¤ì¼ì˜ ì‚¬ì§„ì„ í‘œì‹œí•´ì£¼ëŠ” í´ë˜ìŠ¤.
+ *       ìƒˆë¡œìš´ Activityìƒì„±ë¨.
  * @author Lemoness
  *
  */
 @SuppressWarnings("deprecation")
-public class GalleryMaker{
+public class GalleryMaker extends FragmentActivity{
 
 	private ArrayList<String> mAL_Imglist;
-	private ArrayList<ImageContainer> mAL_Data;
-	private Context mC_Context;
-	private int mI_dispw;
+//	private ArrayList<ImageContainer> mAL_Data;
+	private FragmentActivity mFA_act;
 	private ImageAdapter mIA_Adapter;
 	private Gallery mG_Gallery;
-	private Options mO_Opt;
-	
-	public GalleryMaker(Context context, 
-						Gallery gal, 
-						final ImageView inpview,
-						final TextView title, 
-						final TextView desc){
+	private ImageHandler mImagehandler;
+
+	@Override
+	protected void onCreate(Bundle arg0) {
+		// TODO Auto-generated method stub
+		super.onCreate(arg0);
+		setContentView(R.layout.fragment_gallery);
 		
-		/* Àü¿ªº¯¼ö, ÇÊ¿äÇÑ º¯¼ö ¼³Á¤ */
-		mAL_Imglist = new ArrayList<String>();
-		mAL_Data = new ArrayList<ImageContainer>();
-		mC_Context = context;
-		mG_Gallery = gal;
+		mFA_act = this;
+		mImagehandler = new ImageHandler(mFA_act);
 		
-		/* Bitmap ¿É¼Ç ¼³Á¤ */
-		mO_Opt = new Options();
-		mO_Opt.inPreferredConfig = Config.RGB_565;
-		mO_Opt.inJustDecodeBounds = true;
-		mO_Opt.inPurgeable = true;
-		mO_Opt.inDither = true;
-		mO_Opt.inJustDecodeBounds = false;
+		mG_Gallery = (Gallery) findViewById(R.id.fraggallery_gallery);
+		final ImageView inpview = (ImageView) findViewById(R.id.fraggallery_imgview);
+		final TextView title = (TextView) findViewById(R.id.fraggallery_titletext);
+		final TextView desc = (TextView) findViewById(R.id.fraggallery_desctext);
+		String dir = getIntent().getExtras().getString("dir");
 		
-		/* È­¸é »çÀÌÁî ±¸ÇÏ±â */
-		Display disp = ((WindowManager) mC_Context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-		mI_dispw = disp.getWidth();
-		
-		/* °¶·¯¸® ±×¸² °£°İ Á¶Á¤ */
+		/* ê°¤ëŸ¬ë¦¬ ì—¬ë°± ì„¤ì • */
 		mG_Gallery.setSpacing(10);
 
-		/* ÆÄÀÏ ÀĞ¾î¿À±â */
-		//getfilelist();
-		getImagelist();
+		/* ì´ë¯¸ì§€ ë¦¬ìŠ¤íŠ¸ ê°€ì ¸ì˜¤ëŠ” ë¶€ë¶„ */
+		getImagelist(dir.substring(21));//ì•ì˜ ì„œë²„ ì£¼ì†Œë¥¼ ì œê±°í•˜ê¸° ìœ„í•´ substring
 		
-		/* ¾îµªÅÍ ¼³Á¤ */
-		mIA_Adapter = getAdapter();
+		/* ì–´ëí„° ì„¤ì • */
+		mIA_Adapter = new ImageAdapter(mFA_act);
 		mG_Gallery.setAdapter(mIA_Adapter);
 		
-		/* Å¬¸¯ ¸®½º³Ê ¼³Á¤ */
-		gal.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		/* í´ë¦­ì‹œ ì´ë¯¸ì§€ í™•ëŒ€ìš© í´ë¦­ë¦¬ìŠ¤ë„ˆ */
+		mG_Gallery.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
@@ -95,198 +77,68 @@ public class GalleryMaker{
 				ImageView imgview = inpview;
 				try {
 					imgview.setImageBitmap(new resizeTask().execute(mIA_Adapter.getItem(arg2).getURL()).get());
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
+				} catch (Exception e){
 					e.printStackTrace();
-				} catch (ExecutionException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} // Å¬¸¯½Ã URLÀÇ ¿øº»ÀÌ¹ÌÁö °¡Á®¿À±â & ¶ç¿ì±â
+				}
 				
 				title.setText(mIA_Adapter.getItem(arg2).getName());
-				desc.setText("Å×½ºÆ®¿ë"+'\n'+"¶óÀÎ1"+'\n'+"¶óÀÎ2"+'\n'+"¶óÀÎ3");
+				desc.setText("ë‚ ì§œ"+'\n'+"ì„¤ëª…1"+'\n'+"ì„¤ëª…2"+'\n'+"ì„¤ëª…3");
 			}
 		});
 	}
-	
-	/*
-	 * µğ¹ö±ë¿ë ¸Ş¼Òµå
-	 * /ÇÚµåÆùÀÇ DCIM/Camera/test ÀÇ »çÁø ¸ñ·ÏÀ» °¡Á®¿Â´Ù.
-	 * ÇöÀç »ç¿ëÇÏÁö ¾ÊÀ½.
-	 */
-	public void getfilelist(){
-		String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getPath()
-					  + File.separator
-					  + "Camera"
-					  + File.separator
-					  + "test";
-		File list = new File(path);
-		
-		File[]strlist = list.listFiles(new FilenameFilter() {
-			
-			@Override
-			public boolean accept(File dir, String filename) {
-				// TODO Auto-generated method stub
-				boolean bOK = false;
-				if(filename.toLowerCase().endsWith(".png")) bOK = true;
-				if(filename.toLowerCase().endsWith(".jpg")) bOK = true;
-				if(filename.toLowerCase().endsWith(".jpeg")) bOK = true;
-				if(filename.toLowerCase().endsWith(".bmp")) bOK = true;
-				if(filename.toLowerCase().endsWith(".gif")) bOK = true;
-				return bOK;
-			}
-		});
-		
-		
-		for(int i=0 ; i < strlist.length ; i++){
-			mAL_Imglist.add(strlist[i].toString());
-		}
-		
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
 	}
 	
-	public void getImagelist(){
-//		APIHandler handler = new APIHandler();
-//		mImglist = handler.parsingGallery(handler.getGallery("test"));
-		new getimageTask().execute();
+	public void getImagelist(String dir){
+		new galleryinitTask().execute(dir);
 	}
 	
-	// ÀÌ¹ÌÁö Å©±â Á¶Àı·æ ¸Ş¼­µå, Å©±â´Â È­¸é¿¡ ¸ÂÃç¼­ ÀÚµ¿Á¶Àı, ¿É¼ÇÀº ³»ºÎ¿¡¼­ ÁöÁ¤ÇØ »ç¿ëÇÑ´Ù.
-	private Bitmap Resizer(String dir){
-		/* ¿É¼Ç ¼³Á¤ */
-		Options opt = new Options();
-		opt.inPreferredConfig = Config.RGB_565;
-		opt.inJustDecodeBounds = true;
-		opt.inPurgeable = true;
-		opt.inDither = true;
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
 		
-		BitmapFactory.decodeFile(dir, opt);
-		float scalew = opt.outWidth / mI_dispw;
-		
-		if(scalew >= 8){
-			opt.inSampleSize = 8;
-		}else if(scalew >= 6){
-			opt.inSampleSize = 6;
-		}else if(scalew >= 4){
-			opt.inSampleSize = 4;
-		}else if(scalew >= 2){
-			opt.inSampleSize = 2;
-		}else{
-			opt.inSampleSize = 1;
-		}
-		
-		opt.inJustDecodeBounds = false;
-		//return BitmapFactory.decodeFile(dir, opt);
-		HttpURLConnection connection;
-		try {
-			connection = (HttpURLConnection) new URL(dir).openConnection();
-			connection.connect();
-			return BitmapFactory.decodeStream(new BufferedInputStream(connection.getInputStream()),null,opt);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
+		overridePendingTransition(R.anim.page_donmove, R.anim.page_disappear);
+		finish();
 	}
 
-	// ÀÌ¹ÌÁö Å©±â Á¶Àı·æ ¸Ş¼­µå, ÀÔ·Â¹Ùµç Å©±â·Î ¸®»çÀÌÁî ½ÃÄÑÁØ´Ù.
-	private Bitmap Resizer(String dir, int width, int height){
-		/* ¿É¼Ç ¼³Á¤ */
-		//return Bitmap.createScaledBitmap(BitmapFactory.decodeFile(dir, mOpt), width, height, true);
-		HttpURLConnection connection;
-		try {
-			connection = (HttpURLConnection) new URL(dir).openConnection();
-			connection.connect();
-			return Bitmap.createScaledBitmap(
-						BitmapFactory.decodeStream(
-							new BufferedInputStream(connection.getInputStream()),null,mO_Opt),
-						width,
-						height,
-						true);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
-	}
-
-	public ArrayList<ImageContainer> getimage(){
-		for(final String str : mAL_Imglist){
-			new galleryinitTask().execute(str);
-		}
-		Log.d("debuging:gallery","empty : "+mAL_Data.isEmpty());
-		return mAL_Data;
-	}
-	
-	public ImageAdapter getAdapter(){
-		ImageAdapter adapter = new ImageAdapter(mC_Context, mAL_Data);
-		return adapter;
-	}
 	
 	/*
-	 * ÀÌ¹ÌÁö Å©±â Á¶Àı¿ë ½º·¹µå Å¬·¡½º (°¶·¯¸® ¸®½ºÆ®¿¡ Ãâ·Â¿ë)
-	 * ¸ŞÀÎ½º·¹µå¿¡¼­ µ¿ÀÛ½Ã ¼Óµµ°¡ ´À¸®¹Ç·Î ½º·¹µå·Î »©ÁØ´Ù.
-	 * 180,180  Å©±â·Î ÁöÁ¤ÇØ Á¶ÀıÇØÁØ´Ù.
-	 * @param String ÀÌ¹ÌÁö url
-	 * @return ¾øÀÌ ½º·¹µå Á¾·áÈÄ ¾îµªÅÍ¿¡ ¸®½ºÆ® º¯°æ ¾Ë·ÁÁÜ
-	 */
-	private class galleryinitTask extends AsyncTask<String, Void, Void>{
-	
-		@Override
-		protected Void doInBackground(String... params) {
-			// TODO Auto-generated method stub
-			Log.d("gallery","load start"+params[0]);
-			Bitmap bitmap = Resizer(params[0],180,180);
-			mIA_Adapter.addItem(new ImageContainer(params[0], params[0], params[0], bitmap, null));
-			return null;
-		}
-		//ÀÌ¹ÌÁö ·Îµù ÀÌÈÄ ¾îµªÅÍ¿¡ ¾Ë·ÁÁÜ
-		protected void onPostExecute(Void result) {
-			// TODO Auto-generated method stub
-			Log.d("gallery","load end");
-			super.onPostExecute(result);
-			mIA_Adapter.notifyDataSetChanged();
-		}
-	}
-	
-	/*
-	 * ÀÌ¹ÌÁö Å©±â Á¶Àı¿ë ½º·¹µå Å¬·¡½º (¸®½ºÆ® Å¬¸¯½Ã È­¸é¿¡ Ãâ·Â¿ë)
-	 * ¸ŞÀÎ½º·¹µå¿¡¼­ µ¿ÀÛ½Ã ¼Óµµ°¡ ´À¸®¹Ç·Î ½º·¹µå·Î »©ÁØ´Ù.
-	 * È­¸é Å©±â¿¡ ¸ÂÃç¼­ ¿É¼ÇÀ» ÅëÇØ ÀÚµ¿Á¶Àı
-	 * @param String ÀÌ¹ÌÁö url
-	 * @return Bitmap Å©±âÁ¶ÀıµÈ ºñÆ®¸Ê ÀÌ¹ÌÁö
+	 * ê°¤ëŸ¬ë¦¬ì—ì„œ ì´ë¯¸ì§€ í´ë¦­ ì‹œ ì´ë¯¸ì§€ ë·°ì— ë„ì›Œì£¼ê¸° ìœ„í•´ ë¦¬ì‚¬ì´ì§• í•˜ëŠ” ìŠ¤ë ˆë“œ í´ë˜ìŠ¤
+	 * @params String url
+	 * @return Bitmap image
 	 */
 	private class resizeTask extends AsyncTask<String, Void, Bitmap>{
 
 		@Override
 		protected Bitmap doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			Log.d("gallery","load start"+params[0]);
-			Bitmap bitmap = Resizer(params[0]);
+			Log.d("gallery","load start : " + params[0]);
+			Bitmap bitmap = mImagehandler.resizer_bitmap(params[0]);
+			Log.d("gallery","load end : " + params[0]);
 			return bitmap;
 		}
 	}
 	
 	/*
-	 * APIhandler ÀÌ¿ëÇØ¼­ ÀÌ¹ÌÁö °¡Á®¿À´Â ½º·¹µå Å¬·¡½º
-	 * ÀÎÅÍ³İ ¿¬°áÀÌ¹Ç·Î ½º·¹µå·Î »©ÁÜ
+	 * APIhandlerë¥¼ ì´ìš©í•´ param[0]ì— í•´ë‹¹í•˜ëŠ” ì•¨ë²” ì´ë¯¸ì§€ ë¦¬ìŠ¤íŠ¸ë¥¼ 
+	 * ë°›ì•„ì˜¤ëŠ” ìŠ¤ë ˆë“œ í´ë˜ìŠ¤
 	 */
-	private class getimageTask extends AsyncTask<Void, Void, Void>{
+	private class galleryinitTask extends AsyncTask<String, Void, Void>{
 		
 		@Override
-		protected Void doInBackground(Void... params) {
+		protected Void doInBackground(String... params) {
 			// TODO Auto-generated method stub
 			APIHandler handler = new APIHandler();
-			mAL_Imglist = handler.parsingGallery(handler.getGallery());
-			for(String string : mAL_Imglist){
-				Log.d("gallery","parsed JSON : " + string);
+			mAL_Imglist = handler.parsingGallery(handler.getGallery(params[0]));
+			Log.d("gallery",mAL_Imglist.toString());
+			for(final String str : mAL_Imglist){
+				new resizeGalleryTask().execute(str);
 			}
 			return null;
 		}
@@ -295,37 +147,63 @@ public class GalleryMaker{
 		protected void onPostExecute(Void result) {
 			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			getimage();
 		}
 
+	}
+	
+	/*
+	 * ê°¤ëŸ¬ë¦¬ì— ë„ìœ„ì£¼ê¸° ìœ„í•´ ì´ë¯¸ì§€ ë¦¬ì‚¬ì´ì§• í•´ì£¼ëŠ” ìŠ¤ë ˆë“œ í´ë˜ìŠ¤
+	 * @params String
+	 * @return null
+	 * @postExec ì–´ëí„° ìµœì‹ í™”
+	 */
+	private class resizeGalleryTask extends AsyncTask<String, Void, Void>{
+	
+		@Override
+		protected Void doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			Log.d("gallery","load start"+params[0]);
+			Bitmap bitmap = mImagehandler.resizer_bitmap(params[0], 180, 180);
+			mIA_Adapter.addItem(new ImageContainer(params[0], params[0], params[0], bitmap, null));
+			return null;
+		}
+		//ìŠ¤ë ˆë“œ ë™ì‘ì´í›„ ë°ì´í„° ìµœì‹ í™” & ì²«ë²ˆì§¸ í™”ë©´ í‘œì‹œ
+		protected void onPostExecute(Void result) {
+			// TODO Auto-generated method stub
+			Log.d("gallery","load end");
+			super.onPostExecute(result);
+			mIA_Adapter.notifyDataSetChanged();
+			mG_Gallery.performItemClick(getCurrentFocus(), 0, 0);
+		}
 	}
 }
 
 /**
  * @class imageadapter
- * @desc ÀÌ¹ÌÁö¸¦ °¶·¯¸®¿¡ »Ñ·ÁÁÖ´Â ¾îµªÅÍ
+ * @desc ê°¤ëŸ¬ë¦¬ì— ì‚¬ìš©ë  ì–´ëí„° ì •ì˜ í´ë˜ìŠ¤
  * @author Lemoness
  *
  */
 class ImageAdapter extends BaseAdapter{
 
-	private Context mContext;
+	private FragmentActivity mFA_act;
 	private LayoutInflater mInflater;
 	private ArrayList<ImageContainer> mData;
 	
 	public ImageAdapter(){
 		
 	}
-	public ImageAdapter(Context context, ArrayList<ImageContainer> data){
-		mContext = context;
-		mInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-		mData = data;
+	public ImageAdapter(FragmentActivity context){
+		mFA_act = context;
+		mInflater = (LayoutInflater) mFA_act.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		mData = new ArrayList<ImageContainer>();
 	}
 	
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return mData.size();
+		if(mData == null) return 0;
+		else return mData.size();
 	}
 
 	@Override
@@ -379,8 +257,7 @@ class ImageAdapter extends BaseAdapter{
 	@Override
 	public View getView(int arg0, View arg1, ViewGroup arg2) {
 		// TODO Auto-generated method stub
-		ImageView i = new ImageView(mContext);
-		
+		ImageView i = new ImageView(mFA_act);
 		i.setImageBitmap(mData.get(arg0).getThumnail());
 		
 		return i;
@@ -390,7 +267,7 @@ class ImageAdapter extends BaseAdapter{
 
 /**
  * @class imagecontainer
- * @desc °¶·¯¸® ÀÌ¹ÌÁö Á¤º¸ ÀúÀå Å¬·¡½º
+ * @desc  ì´ë¯¸ì§€ ì €ì¥ìš© í´ë˜ìŠ¤
  * @author Lemoness
  *
  */

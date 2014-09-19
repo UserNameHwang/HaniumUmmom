@@ -4,16 +4,16 @@ import android.text.format.Time;
 
 /**
  * @class youtubesearchdata
- * @desc À¯ºZ °Ë»ö µ¥ÀÌÅÍ ÀúÀå Å¬·¡½º
+ * @desc  ê²€ìƒ‰ ë°ì´í„° ì €ì¥ìš© í´ë˜ìŠ¤
  * @author Lemoness
  *
  */
 public class YoutubeSearchData {
 	
-	private String mS_VideoId;				//Àç»ıÀ» À§ÇÑ ºñµğ¿À ¾ÆÀÌµğ
-	private String mS_Title;				//ºñµğ¿À Á¦¸ñ
-	private String mS_Url;					//½æ³×ÀÏ URL
-	private String mS_PublishedAt;			//¾÷·Îµå ³¯Â¥
+	private String mS_VideoId;				// ë¹„ë””ì˜¤ ì•„ì´ë”” ì €ì¥
+	private String mS_Title;				// ë¹„ë””ì˜¤ ì œëª© ì €ì¥
+	private String mS_Url;					// ë¹„ë””ì˜¤ ê²½ë¡œ URL
+	private String mS_PublishedAt;			// ë¹„ë””ì˜¤ ì—…ë¡œë“œì¼ì ì €ì¥
 	
 	public YoutubeSearchData(String videoId, String title, String url, String publishedAt) {
 		this.mS_VideoId = videoId;
